@@ -70,22 +70,42 @@
 }
 
 #header.scroll > div:first-child {
-  @apply bg-[#151714]/95 md:backdrop-blur-md border-b border-white/10;
+  background-color: var(--yidian-header);
+  border-color: var(--yidian-header-border);
+  @apply md:backdrop-blur-md border-b;
   box-shadow: none;
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-[#151714]/95 border-b border-white/10;
+  background-color: var(--yidian-header);
+  border-color: var(--yidian-header-border);
+  @apply border-b;
   box-shadow: none;
 }
 
 #header.expanded nav {
   position: fixed;
-  top: 70px;
+  top: 61px;
   left: 0;
   right: 0;
   bottom: 70px !important;
   padding: 0 5px;
+}
+
+@media (min-width: 768px) {
+  #header.expanded nav {
+    top: 69px;
+  }
+}
+
+#header [data-aw-nav-link].is-active {
+  color: var(--yidian-nav-active);
+}
+
+@media (min-width: 768px) {
+  #header [data-aw-nav-link].is-active::after {
+    transform: scaleX(1);
+  }
 }
 
 .dropdown:focus .dropdown-menu,

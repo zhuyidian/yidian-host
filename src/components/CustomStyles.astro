@@ -3,12 +3,55 @@ import '@fontsource-variable/inter';
 ---
 
 <style is:inline>
-  :root,
-  .dark {
+  :root {
     --aw-font-sans: 'Inter Variable', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
     --aw-font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
     --aw-font-heading: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
 
+    --aw-color-primary: rgb(16 145 112);
+    --aw-color-secondary: rgb(10 123 94);
+    --aw-color-accent: rgb(217 130 86);
+
+    --aw-color-text-heading: rgb(24 31 27);
+    --aw-color-text-default: rgb(48 58 52);
+    --aw-color-text-muted: rgb(101 113 105);
+    --aw-color-bg-page: rgb(248 250 247);
+    --aw-color-bg-page-dark: rgb(21 23 20);
+    --yidian-header: rgb(246 247 244 / 0.94);
+    --yidian-header-border: rgb(225 229 223);
+    --yidian-brand-text: rgb(32 36 42);
+    --yidian-brand-muted: rgb(101 113 105);
+    --yidian-nav-active: rgb(32 36 42);
+    --yidian-nav-muted: rgb(101 113 105);
+    --yidian-toggle-bg: rgb(233 245 239);
+    --yidian-toggle-border: rgb(31 122 91);
+    --yidian-footer-bg: rgb(32 37 31);
+    --yidian-surface: rgb(241 245 241);
+    --yidian-surface-alt: rgb(232 238 233);
+    --yidian-border: rgb(24 42 32 / 0.12);
+    --yidian-border-strong: rgb(24 42 32 / 0.22);
+    --yidian-text-subtle: rgb(82 96 87);
+    --yidian-text-faint: rgb(112 126 117);
+    --yidian-hover: rgb(24 42 32 / 0.05);
+    --yidian-route-bg: rgb(241 245 241);
+    --yidian-route-line: rgb(24 42 32 / 0.14);
+    --yidian-route-accent-soft: rgb(223 242 232);
+    --yidian-route-accent-border: rgb(92 160 126);
+    --yidian-route-gold: rgb(154 113 30);
+    --yidian-route-gold-soft: rgb(248 241 222);
+    --yidian-route-gold-border: rgb(187 153 83);
+    --yidian-route-blue: rgb(49 112 163);
+    --yidian-route-blue-soft: rgb(226 238 248);
+    --yidian-route-blue-border: rgb(104 151 190);
+    --yidian-route-neutral-soft: rgb(232 238 233);
+
+    ::selection {
+      background-color: rgb(16 145 112);
+      color: white;
+    }
+  }
+
+  .dark {
     --aw-color-primary: rgb(116 224 174);
     --aw-color-secondary: rgb(89 188 142);
     --aw-color-accent: rgb(217 130 86);
@@ -18,10 +61,75 @@ import '@fontsource-variable/inter';
     --aw-color-text-muted: rgb(183 193 182);
     --aw-color-bg-page: rgb(21 23 20);
     --aw-color-bg-page-dark: rgb(21 23 20);
+    --yidian-header: rgb(21 23 20 / 0.94);
+    --yidian-header-border: rgb(51 58 53);
+    --yidian-brand-text: rgb(236 239 234);
+    --yidian-brand-muted: rgb(161 170 159);
+    --yidian-nav-active: rgb(236 239 234);
+    --yidian-nav-muted: rgb(161 170 159);
+    --yidian-toggle-bg: rgb(29 33 30);
+    --yidian-toggle-border: rgb(71 81 73);
+    --yidian-footer-bg: rgb(17 19 16);
+    --yidian-surface: rgb(24 27 24);
+    --yidian-surface-alt: rgb(27 31 27);
+    --yidian-border: rgb(255 255 255 / 0.1);
+    --yidian-border-strong: rgb(255 255 255 / 0.2);
+    --yidian-text-subtle: rgb(184 193 183);
+    --yidian-text-faint: rgb(154 168 155);
+    --yidian-hover: rgb(255 255 255 / 0.04);
+    --yidian-route-bg: rgb(29 33 30);
+    --yidian-route-line: rgb(51 58 53);
+    --yidian-route-accent-soft: rgb(35 56 45);
+    --yidian-route-accent-border: rgb(82 136 110);
+    --yidian-route-gold: rgb(213 182 111);
+    --yidian-route-gold-soft: rgb(46 46 37);
+    --yidian-route-gold-border: rgb(124 114 79);
+    --yidian-route-blue: rgb(130 180 223);
+    --yidian-route-blue-soft: rgb(38 46 47);
+    --yidian-route-blue-border: rgb(87 113 130);
+    --yidian-route-neutral-soft: rgb(36 42 37);
 
     ::selection {
       background-color: rgb(116 224 174);
       color: rgb(21 23 20);
     }
+  }
+
+  .yidian-hero {
+    --aw-color-primary: rgb(116 224 174);
+    --aw-color-secondary: rgb(89 188 142);
+  }
+
+  .yidian-hero-media {
+    filter: brightness(0.74) saturate(0.72) contrast(1.08) sepia(0.1);
+  }
+
+  .yidian-route-icon.is-accent {
+    color: rgb(113 215 167);
+    background: var(--yidian-route-accent-soft);
+    border-color: var(--yidian-route-accent-border);
+  }
+
+  .yidian-route-icon.is-gold {
+    color: var(--yidian-route-gold);
+    background: var(--yidian-route-gold-soft);
+    border-color: var(--yidian-route-gold-border);
+  }
+
+  .yidian-route-icon.is-blue {
+    color: var(--yidian-route-blue);
+    background: var(--yidian-route-blue-soft);
+    border-color: var(--yidian-route-blue-border);
+  }
+
+  .yidian-route-icon.is-neutral {
+    color: var(--yidian-nav-muted);
+    background: var(--yidian-route-neutral-soft);
+    border-color: var(--yidian-toggle-border);
+  }
+
+  .yidian-footer {
+    --yidian-brand-text: rgb(223 228 221);
+    --yidian-brand-muted: rgb(161 170 159);
   }
 </style>

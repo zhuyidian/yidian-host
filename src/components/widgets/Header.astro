@@ -51,7 +51,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-40 mx-auto h-[61px] w-full flex-none border-b border-[var(--yidian-header-border)] bg-[var(--yidian-header)] backdrop-blur-md transition-[opacity] ease-in-out md:h-[69px]',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
@@ -59,32 +59,32 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
+      'relative mx-auto h-[60px] w-full max-w-[1180px] px-[20px] text-default md:h-[68px] md:px-0',
       {
         'md:flex md:justify-between': position !== 'center',
       },
       {
-        'md:grid md:grid-cols-3 md:items-center': position === 'center',
+        'md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-[28px]': position === 'center',
       },
       {
-        'max-w-7xl': !isFullWidth,
+        'max-w-[1180px]': !isFullWidth,
       },
     ]}
   >
     <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
       <a class="flex items-center" href={getHomePermalink()}>
-        <Logo />
+        <Logo tagline="让内容先被找到，让服务直接可用" />
       </a>
       <div class="flex items-center md:hidden">
         <ToggleMenu />
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-visible md:justify-self-center"
+      class="hidden w-full items-center overflow-y-auto overflow-x-hidden text-default md:flex md:h-[36px] md:justify-center md:justify-self-center md:overflow-visible"
       aria-label="Main navigation"
     >
       <ul
-        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
+        class="flex w-full flex-col text-xl font-semibold tracking-normal md:w-auto md:flex-row md:justify-center md:gap-[4px] md:self-center md:text-[14px] md:font-[650]"
       >
         {
           links.map(({ text, href, links, target }) => (
@@ -117,9 +117,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ) : (
                 <a
                   class:list={[
-                    'hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap',
-                    { 'aw-link-active': href === currentPath },
+                    'relative flex items-center whitespace-nowrap px-[12px] py-3 text-[var(--yidian-nav-muted)] transition-colors hover:text-[var(--yidian-nav-active)] after:absolute after:bottom-[2px] after:left-[12px] after:hidden after:h-[2px] after:w-[28px] after:scale-x-0 after:bg-[#71d7a7] after:transition-transform md:py-[8px] md:leading-[20px] md:after:block',
+                    { 'is-active': href === currentPath },
                   ]}
+                  data-aw-nav-link
                   href={href}
                   {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
                 >
@@ -137,9 +138,20 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         'hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0 md:justify-self-end',
       ]}
     >
-      <div class="items-center flex justify-between w-full md:w-auto">
-        <div class="flex">
-          {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
+      <div class="flex w-full items-center justify-between md:w-auto md:justify-end">
+        <div class="flex items-center gap-[13px]">
+          <span class="inline-flex min-w-[62px] items-center gap-[7px] whitespace-nowrap text-[12px] font-normal leading-[15px] text-[var(--yidian-brand-muted)]" role="status">
+            <span class="h-[7px] w-[7px] rounded-full bg-[#71d7a7] shadow-[0_0_0_3px_rgb(113_215_167_/_0.12)]"></span>
+            服务正常
+          </span>
+          {
+            showToggleTheme && (
+              <ToggleTheme
+                class="grid h-[34px] w-[34px] place-items-center rounded-[8px] border border-[var(--yidian-toggle-border)] bg-[var(--yidian-toggle-bg)] text-[var(--yidian-nav-active)] transition hover:border-[#71d7a7] focus:outline-none focus:ring-2 focus:ring-[#71d7a7]/40"
+                iconClass="h-[18px] w-[18px]"
+              />
+            )
+          }
           {
             showRssFeed && (
               <a
@@ -167,3 +179,44 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </div>
   </div>
 </header>
+
+<script is:inline>
+  function setActiveHeaderLink(activeLink) {
+    const links = document.querySelectorAll('#header [data-aw-nav-link]');
+
+    links.forEach((link) => {
+      const isActive = link === activeLink;
+      link.classList.toggle('is-active', isActive);
+
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function syncHeaderNavigation() {
+    const links = Array.from(document.querySelectorAll('#header [data-aw-nav-link]'));
+    if (!links.length) return;
+
+    const matchingLink = links.find((link) => {
+      const url = new URL(link.getAttribute('href'), window.location.href);
+      if (url.origin !== window.location.origin || url.pathname !== window.location.pathname) return false;
+
+      return window.location.hash ? url.hash === window.location.hash : !url.hash;
+    });
+
+    setActiveHeaderLink(matchingLink || links[0]);
+
+    links.forEach((link) => {
+      if (link.dataset.awNavBound) return;
+      link.dataset.awNavBound = 'true';
+      link.addEventListener('click', () => setActiveHeaderLink(link));
+    });
+  }
+
+  syncHeaderNavigation();
+  window.addEventListener('hashchange', syncHeaderNavigation);
+  document.addEventListener('astro:page-load', syncHeaderNavigation);
+</script>

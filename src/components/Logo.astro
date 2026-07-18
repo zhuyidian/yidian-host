@@ -1,13 +1,24 @@
 ---
 import { SITE } from 'astrowind:config';
+
+export interface Props {
+  tagline?: string;
+}
+
+const { tagline = '服务与内容' } = Astro.props;
 ---
 
-<span class="flex items-center gap-2.5 self-center">
+<span class="flex items-center gap-[10px] self-center">
   <span
-    class="grid h-8 w-8 place-items-center rounded-md bg-[#0b9d8c] text-sm font-black text-white shadow-sm"
+    class="grid h-[34px] w-[34px] place-items-center rounded-[8px] bg-[#71d7a7] text-[16px] font-[850] text-[#102018]"
     aria-hidden="true"
   >
     Y
   </span>
-  <span class="text-xl font-bold tracking-normal text-[#16191b] dark:text-white">{SITE?.name}</span>
+  <span class="flex flex-col">
+    <strong class="text-[15px] font-bold leading-[18px] tracking-normal text-[var(--yidian-brand-text)]">{SITE?.name}</strong>
+    <small class="mt-[2px] whitespace-nowrap text-[11px] font-normal leading-[13.2px] text-[var(--yidian-brand-muted)]">
+      {tagline}
+    </small>
+  </span>
 </span>
