@@ -10,8 +10,8 @@ site:
 metadata:
   title:
     default: YidianHub
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    template: '%s — YidianHub'
+  description: 'YidianHub 汇集服务入口、文章内容与日常使用的实用资源。'
   robots:
     index: true
     follow: true

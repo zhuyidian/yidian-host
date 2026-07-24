@@ -1,0 +1,299 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: '关于',
+  description: 'YidianHub 的服务、文章与日常资源空间说明。',
+};
+
+const principles = [
+  {
+    icon: 'tabler:focus-2',
+    title: '入口直接',
+    description: '服务、文章和工具各自保持清楚的入口，减少不必要的跳转和干扰。',
+  },
+  {
+    icon: 'tabler:book-2',
+    title: '内容可回看',
+    description: '说明、记录与方法被整理成长期可访问的内容，而不是散落在即时信息里。',
+  },
+  {
+    icon: 'tabler:folders',
+    title: '持续整理',
+    description: '只保留真正有用的工具、资源与链接，让每一个入口都保持轻量。',
+  },
+];
+
+const serviceStatus = [
+  { label: 'API 服务', value: '已启用' },
+  { label: '文章空间', value: '已启用' },
+  { label: '常用工具', value: '持续整理' },
+  { label: '联系支持', value: '企业微信可用' },
+];
+---
+
+<Layout metadata={metadata}>
+  <section class="about-section" aria-labelledby="aboutHeading">
+    <div class="about-container">
+      <header class="about-intro">
+        <p class="about-kicker">About</p>
+        <h1 id="aboutHeading">关于 YidianHub</h1>
+        <p class="about-subtitle">一个让服务、文章与实用资源保持清楚的独立空间。</p>
+      </header>
+
+      <p class="about-lead">
+        YidianHub
+        不试图把所有信息堆进同一个页面。它更接近一张持续整理的工作台：需要服务时可以直接抵达，需要说明时可以回到文章，需要资源时也能快速找到明确的入口。
+      </p>
+
+      <div class="about-principles">
+        {
+          principles.map((principle, index) => (
+            <article class="about-principle">
+              <Icon name={principle.icon} />
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h2>{principle.title}</h2>
+              <p>{principle.description}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="about-divider"></div>
+
+      <section class="about-status" aria-labelledby="statusHeading">
+        <div>
+          <p class="about-kicker">Service Status</p>
+          <h2 id="statusHeading">当前服务范围</h2>
+        </div>
+
+        <dl>
+          {
+            serviceStatus.map((item) => (
+              <div>
+                <dt>{item.label}</dt>
+                <dd>{item.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about-section {
+    border-bottom: 1px solid var(--yidian-market-line);
+    background: var(--yidian-market-bg);
+    color: var(--yidian-market-text);
+    font-size: 16px;
+    line-height: normal;
+    padding: 80px 0;
+  }
+
+  .about-container {
+    width: min(1180px, calc(100% - 40px));
+    margin-inline: auto;
+  }
+
+  .about-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: var(--yidian-market-accent);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 15px;
+    text-transform: uppercase;
+  }
+
+  .about-kicker::before {
+    width: 23px;
+    height: 1px;
+    background: currentcolor;
+    content: '';
+  }
+
+  .about-intro h1 {
+    margin: 14px 0 6px;
+    color: var(--yidian-market-text);
+    font-family: var(--aw-font-heading);
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .about-subtitle {
+    margin: 0;
+    color: var(--yidian-market-muted);
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .about-lead {
+    max-width: 880px;
+    margin: 126px auto 0;
+    color: var(--yidian-market-text);
+    font-family: var(--aw-font-heading);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.72;
+  }
+
+  .about-principles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 56px;
+  }
+
+  .about-principle {
+    position: relative;
+    min-height: 280px;
+    padding: 28px;
+    border: 1px solid var(--yidian-market-line);
+    border-radius: 8px;
+    background: var(--yidian-market-panel);
+  }
+
+  .about-principle > svg {
+    width: 28px;
+    height: 28px;
+    color: var(--yidian-market-accent);
+  }
+
+  .about-principle > span {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    color: color-mix(in srgb, var(--yidian-market-muted) 35%, transparent);
+    font-family: var(--aw-font-heading);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .about-principle h2 {
+    margin: 38px 0 7px;
+    color: var(--yidian-market-text);
+    font-family: var(--aw-font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .about-principle p {
+    margin: 0;
+    color: var(--yidian-market-muted);
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .about-divider {
+    height: 1px;
+    margin: 72px 0 50px;
+    background: var(--yidian-market-line);
+  }
+
+  .about-status {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+    gap: 80px;
+  }
+
+  .about-status h2 {
+    margin: 10px 0 0;
+    color: var(--yidian-market-text);
+    font-family: var(--aw-font-heading);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .about-status dl {
+    margin: 0;
+    border-top: 1px solid var(--yidian-market-line);
+  }
+
+  .about-status dl > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 45px;
+    border-bottom: 1px solid var(--yidian-market-line);
+  }
+
+  .about-status dt,
+  .about-status dd {
+    margin: 0;
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .about-status dt {
+    color: var(--yidian-market-muted);
+  }
+
+  .about-status dd {
+    color: var(--yidian-market-accent);
+    font-weight: 700;
+    text-align: right;
+  }
+
+  @media (max-width: 680px) {
+    .about-section {
+      padding: 54px 0 62px;
+    }
+
+    .about-container {
+      width: min(1180px, calc(100% - 28px));
+    }
+
+    .about-intro h1 {
+      font-size: 34px;
+    }
+
+    .about-subtitle {
+      font-size: 15px;
+    }
+
+    .about-lead {
+      margin-top: 68px;
+      font-size: 23px;
+      line-height: 1.65;
+    }
+
+    .about-principles {
+      grid-template-columns: 1fr;
+      margin-top: 44px;
+    }
+
+    .about-principle {
+      min-height: 210px;
+      padding: 24px;
+    }
+
+    .about-principle h2 {
+      margin-top: 30px;
+      font-size: 22px;
+    }
+
+    .about-divider {
+      margin: 54px 0 36px;
+    }
+
+    .about-status {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .about-status h2 {
+      font-size: 27px;
+    }
+  }
+</style>

@@ -1,0 +1,456 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+import Layout from '~/layouts/PageLayout.astro';
+import feishuIcon from '~/assets/images/tools/feishu.webp';
+
+const metadata = {
+  title: '常用工具',
+  description: 'YidianHub 日常工作、内容创作与服务使用中的常用工具。',
+};
+
+const categories = ['全部', '办公', '写作', '设计', '效率', '其它'];
+
+const tools = [
+  {
+    category: '办公',
+    image: feishuIcon,
+    number: '01',
+    label: '办公 · 工作流',
+    title: '把 Codex 工作现场搬进飞书',
+    description: '在飞书群内直接对话业务，让 Codex 持续推进需求迭代。',
+    meta: 'Codex · 飞书 · 2026.07.24 · 约 6 分钟阅读',
+    href: 'https://articles.yidianhub.com/posts/codex-in-feishu/',
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <section class="tools-section" aria-labelledby="toolsHeading" data-tools-page>
+    <div class="tools-container">
+      <header class="tools-intro">
+        <div>
+          <p class="tools-kicker">Creator Tools</p>
+          <h1 id="toolsHeading">常用工具</h1>
+          <p class="tools-description">日常工作、内容创作与服务使用中，值得留下的工具与网站。</p>
+        </div>
+        <span class="tools-count">1 个工具</span>
+      </header>
+
+      <div class="tools-divider"></div>
+
+      <div class="tools-filters" role="radiogroup" aria-label="工具分类">
+        {
+          categories.map((category, index) => (
+            <div class="tools-filter-option">
+              <input
+                id={`toolsFilter${index}`}
+                type="radio"
+                name="toolsFilter"
+                value={category}
+                checked={index === 0}
+              />
+              <label for={`toolsFilter${index}`}>{category}</label>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="tools-grid" aria-label="工具列表">
+        {
+          tools.map((tool) => (
+            <a
+              class="tool-card"
+              data-category={tool.category}
+              href={tool.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image class="tool-card-icon" src={tool.image} alt="飞书" width={60} height={60} />
+              <span class="tool-card-number" aria-hidden="true">
+                {tool.number}
+              </span>
+              <span class="tool-card-category">{tool.label}</span>
+              <h2>{tool.title}</h2>
+              <p>{tool.description}</p>
+              <span class="tool-card-meta">{tool.meta}</span>
+              <span class="tool-card-action">
+                <em>进入文章</em>
+                <Icon name="tabler:arrow-right" aria-hidden="true" />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="tools-empty-state" data-tools-empty>
+        <Icon name="tabler:tools" />
+        <strong>暂时还没有收录工具</strong>
+        <span>工具整理后会出现在这里。</span>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  :global(body:has(.tools-section)) {
+    display: flex;
+    min-height: 100svh;
+    flex-direction: column;
+  }
+
+  :global(body:has(.tools-section) > main) {
+    display: flex;
+    flex: 1;
+  }
+
+  .tools-section {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    flex-direction: column;
+    border-bottom: 1px solid var(--yidian-market-line);
+    background: var(--yidian-market-bg);
+    color: var(--yidian-market-text);
+    font-size: 16px;
+    line-height: normal;
+    padding: 76px 0 60px;
+  }
+
+  .tools-container {
+    display: flex;
+    width: min(1180px, calc(100% - 40px));
+    min-height: 100%;
+    margin-inline: auto;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .tools-intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .tools-kicker {
+    margin: 0;
+    color: var(--yidian-market-accent);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 15px;
+    text-transform: uppercase;
+  }
+
+  .tools-intro h1 {
+    margin: 12px 0 6px;
+    color: var(--yidian-market-text);
+    font-family: var(--aw-font-heading);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .tools-description {
+    margin: 0;
+    color: var(--yidian-market-muted);
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .tools-count {
+    flex: none;
+    padding-bottom: 4px;
+    color: var(--yidian-market-muted);
+    font-size: 13px;
+    line-height: 16px;
+    white-space: nowrap;
+  }
+
+  .tools-divider {
+    height: 1px;
+    margin: 30px 0 24px;
+    background: var(--yidian-market-line);
+  }
+
+  .tools-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .tools-filter-option {
+    position: relative;
+  }
+
+  .tools-filter-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .tools-filter-option label {
+    display: inline-flex;
+    min-height: 34px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    border: 1px solid var(--yidian-market-line-strong);
+    border-radius: 8px;
+    background: var(--yidian-market-panel);
+    color: var(--yidian-market-muted);
+    font-size: 13px;
+    line-height: 16px;
+    transition:
+      border-color 0.16s,
+      background-color 0.16s,
+      color 0.16s;
+    cursor: pointer;
+  }
+
+  .tools-filter-option label:hover,
+  .tools-filter-option input:checked + label {
+    border-color: var(--yidian-market-accent);
+    background: var(--yidian-market-accent-soft);
+    color: var(--yidian-market-accent);
+  }
+
+  .tools-filter-option input:focus-visible + label {
+    outline: 2px solid var(--yidian-market-accent);
+    outline-offset: 2px;
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 42px;
+  }
+
+  .tool-card {
+    position: relative;
+    display: none;
+    min-height: 280px;
+    overflow: hidden;
+    padding: 26px;
+    border: 1px solid var(--yidian-market-line);
+    border-radius: 8px;
+    background: var(--yidian-market-panel);
+    color: var(--yidian-market-text);
+    text-decoration: none;
+    transition:
+      border-color 0.16s,
+      background-color 0.16s,
+      color 0.16s,
+      transform 0.16s,
+      padding 0.16s,
+      opacity 0.16s;
+  }
+
+  .tool-card:hover {
+    border-color: var(--yidian-market-accent);
+    transform: translateY(-2px);
+  }
+
+  .tool-card:focus-visible {
+    outline: 2px solid var(--yidian-market-accent);
+    outline-offset: 3px;
+  }
+
+  .tool-card-icon {
+    display: block;
+    width: 29px;
+    height: 29px;
+    border-radius: 7px;
+    object-fit: cover;
+  }
+
+  .tool-card-number {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: var(--yidian-market-line-strong);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .tool-card-category {
+    display: block;
+    margin-top: 14px;
+    color: var(--yidian-market-accent);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 15px;
+  }
+
+  .tool-card h2 {
+    margin: 14px 0 8px;
+    color: var(--yidian-market-text);
+    font-family: var(--aw-font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .tool-card > p {
+    max-width: 440px;
+    margin: 0;
+    color: var(--yidian-market-muted);
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .tool-card-meta {
+    position: absolute;
+    right: 26px;
+    bottom: 57px;
+    left: 26px;
+    color: var(--yidian-market-muted);
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .tool-card-action {
+    position: absolute;
+    right: 26px;
+    bottom: 24px;
+    left: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--yidian-market-accent);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  .tool-card-action em {
+    font-style: normal;
+  }
+
+  .tool-card-action svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .tools-section:has(#toolsFilter0:checked) .tool-card,
+  .tools-section:has(#toolsFilter1:checked) .tool-card[data-category='办公'] {
+    display: block;
+  }
+
+  .tools-section:has(#toolsFilter2:checked) .tools-grid,
+  .tools-section:has(#toolsFilter3:checked) .tools-grid,
+  .tools-section:has(#toolsFilter4:checked) .tools-grid,
+  .tools-section:has(#toolsFilter5:checked) .tools-grid {
+    display: none;
+  }
+
+  .tools-empty-state {
+    display: none;
+    min-height: 280px;
+    place-content: center;
+    gap: 8px;
+    padding-bottom: 18px;
+    color: var(--yidian-market-muted);
+    text-align: center;
+    transform: translateY(-18px);
+  }
+
+  .tools-section:has(#toolsFilter2:checked) .tools-empty-state,
+  .tools-section:has(#toolsFilter3:checked) .tools-empty-state,
+  .tools-section:has(#toolsFilter4:checked) .tools-empty-state,
+  .tools-section:has(#toolsFilter5:checked) .tools-empty-state {
+    display: grid;
+  }
+
+  .tools-empty-state svg {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto 5px;
+  }
+
+  .tools-empty-state strong {
+    color: var(--yidian-market-text);
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .tools-empty-state span {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  @media (max-width: 680px) {
+    .tools-section {
+      padding: 54px 0 62px;
+    }
+
+    .tools-container {
+      width: min(1180px, calc(100% - 28px));
+    }
+
+    .tools-intro {
+      display: block;
+    }
+
+    .tools-intro h1 {
+      font-size: 34px;
+    }
+
+    .tools-count {
+      display: block;
+      margin-top: 22px;
+      padding: 0;
+    }
+
+    .tools-divider {
+      margin: 26px 0 20px;
+    }
+
+    .tools-empty-state {
+      min-height: 320px;
+      transform: none;
+    }
+
+    .tools-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .tool-card {
+      min-height: 260px;
+      padding: 22px;
+    }
+
+    .tool-card-number {
+      top: 19px;
+      right: 21px;
+      font-size: 28px;
+    }
+
+    .tool-card h2 {
+      margin-top: 14px;
+      font-size: 21px;
+    }
+
+    .tool-card-meta {
+      right: 22px;
+      bottom: 52px;
+      left: 22px;
+    }
+
+    .tool-card-action {
+      right: 22px;
+      bottom: 20px;
+      left: 22px;
+    }
+  }
+</style>

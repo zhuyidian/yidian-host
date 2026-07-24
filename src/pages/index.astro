@@ -4,12 +4,19 @@ import { Icon } from 'astro-icon/components';
 
 import Layout from '~/layouts/PageLayout.astro';
 import workspaceImage from '~/assets/images/yidianhub-workspace-v2.jpg';
+import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
   title: 'YidianHub',
   description: '服务入口、文章与实用资源的独立空间。',
   ignoreTitleTemplate: true,
 };
+
+const siteStats = [
+  { value: '8', label: '个商品' },
+  { value: '2', label: '篇文章' },
+  { value: '1', label: '个工具' },
+];
 
 const latestWriting = [
   {
@@ -57,7 +64,7 @@ const routes = [
     tone: 'blue',
     title: '资源与工具',
     detail: '查找常用工具、链接与实用方法',
-    href: '#process',
+    href: getPermalink('/tools'),
     external: false,
   },
   {
@@ -65,14 +72,16 @@ const routes = [
     tone: 'neutral',
     title: '关于 YidianHub',
     detail: '了解本站定位、入口边界与更新方向',
-    href: '#about',
+    href: getPermalink('/about'),
     external: false,
   },
 ];
 ---
 
 <Layout metadata={metadata}>
-  <section class="yidian-hero relative isolate min-h-[511px] overflow-hidden border-b border-[#333a35] bg-[#10110f] md:min-h-[591px]">
+  <section
+    class="yidian-hero relative isolate min-h-[511px] overflow-hidden border-b border-[#333a35] bg-[#10110f] md:min-h-[591px]"
+  >
     <Image
       src={workspaceImage}
       alt="夜间工作台上的笔记本电脑与台灯"
@@ -85,58 +94,67 @@ const routes = [
     <div
       class="absolute inset-0 z-[5] bg-[linear-gradient(90deg,rgba(16,17,15,0.82)_0%,rgba(16,17,15,0.58)_34%,rgba(16,17,15,0.16)_66%,rgba(16,17,15,0)_84%)]"
       aria-hidden="true"
-    ></div>
-    <div class="relative z-10 mx-auto flex min-h-[510px] max-w-[1180px] flex-col items-start justify-end px-[14px] pb-[42px] pt-[72px] md:min-h-[590px] md:justify-center md:px-0 md:py-[72px]">
+    >
+    </div>
+    <div
+      class="relative z-10 mx-auto flex min-h-[510px] max-w-[1180px] flex-col items-start justify-end px-[14px] pb-[42px] pt-[72px] md:min-h-[590px] md:justify-center md:px-0 md:py-[72px]"
+    >
       <p class="m-0 flex w-fit items-center gap-[9px] text-[12px] font-[800] leading-[15px] text-primary">
-          <span class="h-px w-[24px] bg-primary"></span>
-          服务入口 · 长文阅读 · 资源沉淀
-        </p>
-        <h1 class="mb-[20px] mt-[16px] w-fit max-w-[650px] font-heading text-[38px] font-bold leading-[45.6px] text-[#f5f7f3] md:mt-[22px] md:text-[54px] md:leading-[64.8px]">
-          让服务即刻抵达，<br />让内容长久留存。
-        </h1>
-        <p class="m-0 max-w-[570px] text-[15px] leading-[27px] text-[#c4cbc2] md:text-[17px] md:leading-[30.6px]">
-          YidianHub 将服务、文章与日常资源放在同一条清晰路径上。没有多余干扰，打开后直接抵达正在需要的内容。
-        </p>
-        <div class="mt-[30px] flex h-[40px] w-fit flex-row gap-[10px]">
-          <a
-            class="flex h-[40px] items-center justify-center gap-[8px] rounded-[8px] border border-[#71d7a7] bg-[#71d7a7] px-[15px] text-[14px] font-bold text-[#102018] transition hover:bg-[#82dfb4]"
-            href="https://api.yidianhub.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon name="tabler:server" class="h-[16px] w-[16px]" />
-            进入 API 服务
-          </a>
-          <a
-            class="flex h-[40px] items-center justify-center gap-[8px] rounded-[8px] border border-[#566057] bg-[#1b1f1c] px-[15px] text-[14px] font-bold text-[#f0f3ee] transition hover:border-[#71d7a7] hover:text-[#71d7a7]"
-            href="https://articles.yidianhub.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon name="tabler:book-2" class="h-[16px] w-[16px]" />
-            浏览全部文章
-          </a>
-        </div>
-        <dl class="mt-[30px] flex h-[42px] w-full md:mt-[42px] md:w-[336px]">
-          <div class="flex-1 pr-[16px] md:w-[112px] md:flex-none md:pr-[28px]">
-            <dt class="text-[21px] font-[800] leading-[26px] text-[#f5f7f3]">01</dt>
-            <dd class="mt-px text-[12px] leading-[15px] text-[#9fa89e]">服务入口</dd>
-          </div>
-          <div class="flex-1 border-l border-[#3c433d] px-[16px] md:w-[112px] md:flex-none md:px-[28px]">
-            <dt class="text-[21px] font-[800] leading-[26px] text-[#f5f7f3]">02</dt>
-            <dd class="mt-px text-[12px] leading-[15px] text-[#9fa89e]">内容空间</dd>
-          </div>
-          <div class="flex-1 border-l border-[#3c433d] px-[16px] md:w-[112px] md:flex-none md:px-[28px]">
-            <dt class="text-[21px] font-[800] leading-[26px] text-[#f5f7f3]">03</dt>
-            <dd class="mt-px text-[12px] leading-[15px] text-[#9fa89e]">持续整理</dd>
-          </div>
-        </dl>
+        <span class="h-px w-[24px] bg-primary"></span>
+        服务入口 · 长文阅读 · 资源沉淀
+      </p>
+      <h1
+        class="mb-[20px] mt-[16px] w-fit max-w-[650px] font-heading text-[38px] font-bold leading-[45.6px] text-[#f5f7f3] md:mt-[22px] md:text-[54px] md:leading-[64.8px]"
+      >
+        让服务即刻抵达，<br />让内容长久留存。
+      </h1>
+      <p class="m-0 max-w-[570px] text-[15px] leading-[27px] text-[#c4cbc2] md:text-[17px] md:leading-[30.6px]">
+        YidianHub 将服务、文章与日常资源放在同一条清晰路径上。没有多余干扰，打开后直接抵达正在需要的内容。
+      </p>
+      <div class="mt-[30px] flex h-[40px] w-fit flex-row gap-[10px]">
+        <a
+          class="flex h-[40px] items-center justify-center gap-[8px] rounded-[8px] border border-[#71d7a7] bg-[#71d7a7] px-[15px] text-[14px] font-bold text-[#102018] transition hover:bg-[#82dfb4]"
+          href="https://api.yidianhub.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="tabler:server" class="h-[16px] w-[16px]" />
+          进入 API 服务
+        </a>
+        <a
+          class="flex h-[40px] items-center justify-center gap-[8px] rounded-[8px] border border-[#566057] bg-[#1b1f1c] px-[15px] text-[14px] font-bold text-[#f0f3ee] transition hover:border-[#71d7a7] hover:text-[#71d7a7]"
+          href="https://articles.yidianhub.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="tabler:book-2" class="h-[16px] w-[16px]" />
+          浏览全部文章
+        </a>
+      </div>
+      <dl class="mt-[30px] flex h-[42px] w-full md:mt-[42px] md:w-[336px]">
+        {
+          siteStats.map((stat, index) => (
+            <div
+              class={
+                index === 0
+                  ? 'flex-1 pr-[16px] md:w-[112px] md:flex-none md:pr-[28px]'
+                  : 'flex-1 border-l border-[#3c433d] px-[16px] md:w-[112px] md:flex-none md:px-[28px]'
+              }
+            >
+              <dt class="text-[21px] font-[800] leading-[26px] text-[#f5f7f3]">{stat.value}</dt>
+              <dd class="mt-px text-[12px] leading-[15px] text-[#9fa89e]">{stat.label}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
   </section>
 
   <section class="border-b border-[var(--yidian-border)] bg-[var(--yidian-surface)] py-18 sm:py-24">
     <div class="mx-auto max-w-[1180px] px-6 lg:px-8">
-      <div class="flex flex-col justify-between gap-5 border-b border-[var(--yidian-border)] pb-8 sm:flex-row sm:items-end">
+      <div
+        class="flex flex-col justify-between gap-5 border-b border-[var(--yidian-border)] pb-8 sm:flex-row sm:items-end"
+      >
         <div>
           <p class="text-sm font-semibold text-primary">Latest writing</p>
           <h2 class="mt-3 font-heading text-3xl font-bold text-heading sm:text-4xl">最近发布</h2>
@@ -183,13 +201,18 @@ const routes = [
     </div>
   </section>
 
-  <section id="resources" class="border-b border-[var(--yidian-route-line)] bg-[var(--yidian-route-bg)] py-[54px] min-[681px]:py-[76px]">
+  <section
+    id="resources"
+    class="border-b border-[var(--yidian-route-line)] bg-[var(--yidian-route-bg)] py-[54px] min-[681px]:py-[76px]"
+  >
     <div
       class="mx-auto grid w-[calc(100%-28px)] max-w-[1180px] grid-cols-1 items-start gap-[38px] min-[901px]:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.2fr)] min-[901px]:gap-[80px]"
     >
       <div class="min-[901px]:sticky min-[901px]:top-[130px]">
         <p class="m-0 text-[12px] font-[800] uppercase leading-[15px] text-primary">Explore YidianHub</p>
-        <h2 class="m-0 mt-[5px] font-heading text-[27px] font-bold leading-[35.1px] text-heading min-[681px]:text-[30px] min-[681px]:leading-[39px]">
+        <h2
+          class="m-0 mt-[5px] font-heading text-[27px] font-bold leading-[35.1px] text-heading min-[681px]:text-[30px] min-[681px]:leading-[39px]"
+        >
           从你关心的事情开始
         </h2>
         <p class="m-0 mt-[18px] text-[16px] leading-[20px] text-[var(--yidian-nav-muted)]">
@@ -204,12 +227,19 @@ const routes = [
               href={route.href}
               {...(route.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
-              <span class:list={['yidian-route-icon grid h-[38px] w-[38px] place-items-center rounded-[8px] border', `is-${route.tone}`]}>
+              <span
+                class:list={[
+                  'yidian-route-icon grid h-[38px] w-[38px] place-items-center rounded-[8px] border',
+                  `is-${route.tone}`,
+                ]}
+              >
                 <Icon name={route.icon} class="h-[18px] w-[18px]" />
               </span>
               <span class="min-w-0">
                 <strong class="block text-[15px] font-bold leading-[19px] text-heading">{route.title}</strong>
-                <small class="mt-[3px] block truncate text-[13px] leading-[16px] text-[var(--yidian-nav-muted)]">{route.detail}</small>
+                <small class="mt-[3px] block truncate text-[13px] leading-[16px] text-[var(--yidian-nav-muted)]">
+                  {route.detail}
+                </small>
               </span>
               <Icon name="tabler:chevron-right" class="h-[17px] w-[17px] text-[var(--yidian-nav-muted)]" />
             </a>
@@ -219,35 +249,47 @@ const routes = [
     </div>
   </section>
 
-  <section id="process" class="border-y border-[var(--yidian-border)] bg-[var(--yidian-surface-alt)] py-18 sm:py-24">
-    <div class="mx-auto max-w-[1180px] px-6 lg:px-8">
-      <div class="grid gap-10 border-b border-[var(--yidian-border)] pb-10 lg:grid-cols-[0.85fr_1.15fr]">
-        <div>
-          <p class="text-sm font-semibold text-primary">Working flow</p>
-          <h2 class="mt-3 font-heading text-3xl font-bold leading-tight text-heading sm:text-4xl">服务、记录与阅读，形成一条稳定路径</h2>
-        </div>
-        <p class="max-w-2xl self-end leading-8 text-[var(--yidian-text-subtle)]">
-          先让服务入口保持直接，再让需要留下的经验进入文章空间。工具与资源会随着实际使用逐步归档，而不是堆成难以查找的信息流。
-        </p>
+  <section id="process" class="border-b border-[#333a35] bg-[#151714] py-[54px] min-[681px]:py-[76px]">
+    <div
+      class="mx-auto grid w-[calc(100%-28px)] max-w-[1180px] grid-cols-1 gap-[38px] min-[901px]:grid-cols-[440px_660px] min-[901px]:gap-[80px]"
+    >
+      <div>
+        <p class="m-0 text-[12px] font-[800] uppercase leading-[15px] text-[#71d7a7]">Working flow</p>
+        <h2
+          class="m-0 mt-[5px] font-heading text-[27px] font-bold leading-[35.1px] text-[#ecefea] min-[681px]:text-[30px] min-[681px]:leading-[39px]"
+        >
+          服务、记录与阅读，形成一条稳定路径
+        </h2>
       </div>
-      <ol class="grid gap-10 pt-10 md:grid-cols-3">
-        <li>
-          <span class="text-sm font-semibold text-[#d98256]">01</span>
-          <h3 class="mt-4 text-xl font-bold text-heading">直接进入服务</h3>
-          <p class="mt-3 leading-7 text-[var(--yidian-text-faint)]">在需要时直接打开 API 服务，不增加额外跳转和干扰。</p>
+      <ol class="m-0 border-t border-[#333a35] p-0">
+        <li class="grid grid-cols-[46px_minmax(0,1fr)] gap-4 border-b border-[#333a35] py-[22px]">
+          <span class="text-[12px] font-[800] leading-[19.2px] text-[#71d7a7]">01</span>
+          <div>
+            <h3 class="m-0 text-[16px] font-bold leading-5 text-[#ecefea]">直接进入服务</h3>
+            <p class="m-0 mt-[5px] text-[14px] leading-[18px] text-[#a1aa9f]">
+              在需要时直接打开 API 服务，不增加额外跳转和干扰。
+            </p>
+          </div>
         </li>
-        <li>
-          <span class="text-sm font-semibold text-[#d98256]">02</span>
-          <h3 class="mt-4 text-xl font-bold text-heading">沉淀必要记录</h3>
-          <p class="mt-3 leading-7 text-[var(--yidian-text-faint)]">将说明、方法与更新写成可长期回看的文章。</p>
+        <li class="grid grid-cols-[46px_minmax(0,1fr)] gap-4 border-b border-[#333a35] py-[22px]">
+          <span class="text-[12px] font-[800] leading-[19.2px] text-[#71d7a7]">02</span>
+          <div>
+            <h3 class="m-0 text-[16px] font-bold leading-5 text-[#ecefea]">沉淀必要记录</h3>
+            <p class="m-0 mt-[5px] text-[14px] leading-[18px] text-[#a1aa9f]">
+              将说明、方法与更新写成可长期回看的文章。
+            </p>
+          </div>
         </li>
-        <li>
-          <span class="text-sm font-semibold text-[#d98256]">03</span>
-          <h3 class="mt-4 text-xl font-bold text-heading">持续整理资源</h3>
-          <p class="mt-3 leading-7 text-[var(--yidian-text-faint)]">只保留真正有用的工具和链接，让入口保持轻量。</p>
+        <li class="grid grid-cols-[46px_minmax(0,1fr)] gap-4 border-b border-[#333a35] py-[22px]">
+          <span class="text-[12px] font-[800] leading-[19.2px] text-[#71d7a7]">03</span>
+          <div>
+            <h3 class="m-0 text-[16px] font-bold leading-5 text-[#ecefea]">持续整理资源</h3>
+            <p class="m-0 mt-[5px] text-[14px] leading-[18px] text-[#a1aa9f]">
+              只保留真正有用的工具和链接，让入口保持轻量。
+            </p>
+          </div>
         </li>
       </ol>
     </div>
   </section>
-
 </Layout>

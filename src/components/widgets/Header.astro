@@ -117,14 +117,24 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ) : (
                 <a
                   class:list={[
-                    'relative flex items-center whitespace-nowrap px-[12px] py-3 text-[var(--yidian-nav-muted)] transition-colors hover:text-[var(--yidian-nav-active)] after:absolute after:bottom-[2px] after:left-[12px] after:hidden after:h-[2px] after:w-[28px] after:scale-x-0 after:bg-[#71d7a7] after:transition-transform md:py-[8px] md:leading-[20px] md:after:block',
+                    "group relative flex items-center whitespace-nowrap px-[12px] py-3 text-[var(--yidian-nav-muted)] transition-colors hover:text-[var(--yidian-nav-active)] after:absolute after:bottom-[2px] after:left-[12px] after:right-[12px] after:h-[2px] after:bg-transparent after:content-[''] after:transition-colors md:py-[8px] md:leading-[20px]",
                     { 'is-active': href === currentPath },
                   ]}
                   data-aw-nav-link
                   href={href}
                   {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
+                  {...(target === '_blank' ? { 'data-aw-external-link': 'true' } : {})}
                 >
                   {text}
+                  {
+                    target === '_blank' && (
+                      <Icon
+                        name="tabler:external-link"
+                        class="ml-[4px] h-[13px] w-[13px] -translate-y-px text-current opacity-45 transition-opacity group-hover:opacity-75"
+                        aria-hidden="true"
+                      />
+                    )
+                  }
                 </a>
               )}
             </li>
@@ -140,7 +150,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     >
       <div class="flex w-full items-center justify-between md:w-auto md:justify-end">
         <div class="flex items-center gap-[13px]">
-          <span class="inline-flex min-w-[62px] items-center gap-[7px] whitespace-nowrap text-[12px] font-normal leading-[15px] text-[var(--yidian-brand-muted)]" role="status">
+          <span
+            class="inline-flex min-w-[62px] items-center gap-[7px] whitespace-nowrap text-[12px] font-normal leading-[15px] text-[var(--yidian-brand-muted)]"
+            role="status"
+          >
             <span class="h-[7px] w-[7px] rounded-full bg-[#71d7a7] shadow-[0_0_0_3px_rgb(113_215_167_/_0.12)]"></span>
             服务正常
           </span>
@@ -182,6 +195,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 
 <script is:inline>
   function setActiveHeaderLink(activeLink) {
+    if (activeLink?.dataset.awExternalLink === 'true') return;
+
     const links = document.querySelectorAll('#header [data-aw-nav-link]');
 
     links.forEach((link) => {
@@ -200,19 +215,25 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     const links = Array.from(document.querySelectorAll('#header [data-aw-nav-link]'));
     if (!links.length) return;
 
-    const matchingLink = links.find((link) => {
+    const internalLinks = links.filter((link) => link.dataset.awExternalLink !== 'true');
+    const normalizePathname = (pathname) => pathname.replace(/\/+$/, '') || '/';
+    const currentPathname = normalizePathname(window.location.pathname);
+
+    const matchingLink = internalLinks.find((link) => {
       const url = new URL(link.getAttribute('href'), window.location.href);
-      if (url.origin !== window.location.origin || url.pathname !== window.location.pathname) return false;
+      if (url.origin !== window.location.origin || normalizePathname(url.pathname) !== currentPathname) return false;
 
       return window.location.hash ? url.hash === window.location.hash : !url.hash;
     });
 
-    setActiveHeaderLink(matchingLink || links[0]);
+    setActiveHeaderLink(matchingLink || internalLinks[0]);
 
     links.forEach((link) => {
       if (link.dataset.awNavBound) return;
       link.dataset.awNavBound = 'true';
-      link.addEventListener('click', () => setActiveHeaderLink(link));
+      link.addEventListener('click', () => {
+        if (link.dataset.awExternalLink !== 'true') setActiveHeaderLink(link);
+      });
     });
   }
 

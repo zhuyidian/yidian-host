@@ -102,10 +102,8 @@
   color: var(--yidian-nav-active);
 }
 
-@media (min-width: 768px) {
-  #header [data-aw-nav-link].is-active::after {
-    transform: scaleX(1);
-  }
+#header [data-aw-nav-link].is-active::after {
+  background-color: var(--aw-color-primary);
 }
 
 .dropdown:focus .dropdown-menu,
