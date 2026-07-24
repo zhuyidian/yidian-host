@@ -1,6 +1,7 @@
 services:
   main-site:
-    build: .
+    image: ghcr.io/zhuyidian/yidian-host:main
+    pull_policy: always
     container_name: yidianhub-main
     restart: unless-stopped
     networks:
