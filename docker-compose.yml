@@ -3,5 +3,12 @@ services:
     build: .
     container_name: yidianhub-main
     restart: unless-stopped
-    ports:
-      - "127.0.0.1:8080:8080"
+    networks:
+      caddy_frontend:
+        aliases:
+          - yidianhub-main
+
+networks:
+  caddy_frontend:
+    external: true
+    name: yidian-api_frontend
