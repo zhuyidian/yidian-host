@@ -18,6 +18,7 @@ export const footerData = {
       title: '服务入口',
       links: [
         { text: 'API 服务', href: 'https://api.yidianhub.com' },
+        { text: '商城', href: getPermalink('/market') },
         { text: '文章空间', href: 'https://articles.yidianhub.com' },
       ],
     },

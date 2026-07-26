@@ -184,7 +184,7 @@ const products = [
         <span class="market-count" data-market-count>{products.length} 件在售商品</span>
       </div>
 
-      <div class="market-product-grid" data-market-grid>
+      <div id="marketProductGrid" class="market-product-grid" data-market-grid>
         {
           products.map((product, index) => (
             <article
@@ -240,6 +240,16 @@ const products = [
         }
       </div>
 
+      <nav class="market-pagination" data-market-pagination aria-label="商品分页" hidden>
+        <button type="button" data-market-page-prev aria-label="上一页" aria-controls="marketProductGrid">
+          <Icon name="tabler:chevron-left" />
+        </button>
+        <div class="market-page-list" data-market-pages aria-label="页码"></div>
+        <button type="button" data-market-page-next aria-label="下一页" aria-controls="marketProductGrid">
+          <Icon name="tabler:chevron-right" />
+        </button>
+      </nav>
+
       <div class="market-empty-state" data-market-empty hidden>
         <Icon name="tabler:building-store" />
         <strong>暂时没有可购买的商品</strong>
@@ -290,19 +300,63 @@ const products = [
     const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-market-filter]'));
     const count = document.querySelector<HTMLElement>('[data-market-count]');
     const emptyState = document.querySelector<HTMLElement>('[data-market-empty]');
+    const pagination = document.querySelector<HTMLElement>('[data-market-pagination]');
+    const pageList = document.querySelector<HTMLElement>('[data-market-pages]');
+    const previousPage = document.querySelector<HTMLButtonElement>('[data-market-page-prev]');
+    const nextPage = document.querySelector<HTMLButtonElement>('[data-market-page-next]');
     const productDialog = document.querySelector<HTMLDialogElement>('#productDialog');
     const orderDialog = document.querySelector<HTMLDialogElement>('#orderDialog');
+    const productsPerPage = 6;
+    let activeCategory = '全部';
+    let activePage = 1;
+
+    const updatePagination = (totalPages: number) => {
+      if (!pagination || !pageList || !previousPage || !nextPage) return;
+
+      pagination.hidden = totalPages <= 1;
+      previousPage.disabled = activePage <= 1;
+      nextPage.disabled = activePage >= totalPages;
+      pageList.replaceChildren();
+
+      for (let page = 1; page <= totalPages; page += 1) {
+        const button = document.createElement('button');
+        const isCurrentPage = page === activePage;
+        button.type = 'button';
+        button.textContent = String(page);
+        button.dataset.marketPage = String(page);
+        button.classList.toggle('active', isCurrentPage);
+        button.setAttribute('aria-label', `第 ${page} 页`);
+        button.setAttribute('aria-controls', 'marketProductGrid');
+        if (isCurrentPage) button.setAttribute('aria-current', 'page');
+        pageList.append(button);
+      }
+    };
+
+    const renderProducts = () => {
+      const matchingCards = cards.filter(
+        (card) => activeCategory === '全部' || card.dataset.category === activeCategory
+      );
+      const totalPages = Math.ceil(matchingCards.length / productsPerPage);
+      activePage = Math.min(activePage, Math.max(totalPages, 1));
+      const firstCard = (activePage - 1) * productsPerPage;
+
+      cards.forEach((card) => {
+        card.hidden = true;
+      });
+      matchingCards.slice(firstCard, firstCard + productsPerPage).forEach((card) => {
+        card.hidden = false;
+      });
+
+      if (count) count.textContent = `${matchingCards.length} 件在售商品`;
+      marketGrid.hidden = matchingCards.length === 0;
+      if (emptyState) emptyState.hidden = matchingCards.length !== 0;
+      updatePagination(totalPages);
+    };
 
     filterButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        const category = button.dataset.marketFilter || '全部';
-        let visibleCount = 0;
-
-        cards.forEach((card) => {
-          const visible = category === '全部' || card.dataset.category === category;
-          card.hidden = !visible;
-          if (visible) visibleCount += 1;
-        });
+        activeCategory = button.dataset.marketFilter || '全部';
+        activePage = 1;
 
         filterButtons.forEach((item) => {
           const active = item === button;
@@ -310,11 +364,33 @@ const products = [
           item.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
 
-        if (count) count.textContent = `${visibleCount} 件在售商品`;
-        marketGrid.hidden = visibleCount === 0;
-        if (emptyState) emptyState.hidden = visibleCount !== 0;
+        renderProducts();
       });
     });
+
+    const changePage = (page: number) => {
+      const matchingCount = cards.filter(
+        (card) => activeCategory === '全部' || card.dataset.category === activeCategory
+      ).length;
+      const totalPages = Math.ceil(matchingCount / productsPerPage);
+
+      if (page < 1 || page > totalPages || page === activePage) return;
+
+      activePage = page;
+      renderProducts();
+      marketGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    pageList?.addEventListener('click', (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-market-page]');
+      if (!button) return;
+      changePage(Number(button.dataset.marketPage));
+    });
+
+    previousPage?.addEventListener('click', () => changePage(activePage - 1));
+    nextPage?.addEventListener('click', () => changePage(activePage + 1));
+
+    renderProducts();
 
     document.querySelectorAll<HTMLButtonElement>('[data-product-open]').forEach((button) => {
       button.addEventListener('click', () => {
@@ -462,6 +538,62 @@ const products = [
 
   .market-product-grid[hidden] {
     display: none;
+  }
+
+  .market-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+  }
+
+  .market-pagination[hidden] {
+    display: none;
+  }
+
+  .market-page-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .market-pagination button {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--yidian-market-line-strong);
+    border-radius: 8px;
+    background: var(--yidian-market-panel);
+    color: var(--yidian-market-muted);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    transition:
+      border-color 0.16s,
+      background-color 0.16s,
+      color 0.16s;
+  }
+
+  .market-pagination button:hover:not(:disabled),
+  .market-pagination button.active {
+    border-color: var(--yidian-market-accent);
+    background: var(--yidian-market-accent-soft);
+    color: var(--yidian-market-accent);
+  }
+
+  .market-pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+
+  .market-pagination svg {
+    width: 16px;
+    height: 16px;
   }
 
   .market-empty-state {
