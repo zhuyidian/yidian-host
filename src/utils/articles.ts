@@ -27,6 +27,13 @@ const ARTICLES_RSS_URL = import.meta.env.ARTICLES_RSS_URL || 'https://articles.y
 
 const fallbackArticles: LatestArticle[] = [
   {
+    date: '2026/08/03',
+    title: '一点API 使用教程(一)：兑换key',
+    excerpt: '从注册登录、兑换额度到创建令牌，并给出 Codex 接入一点API 的配置示例。',
+    href: 'https://articles.yidianhub.com/posts/yidian-api-redeem-key/',
+    meta: '最新文章',
+  },
+  {
     date: '2026/07/24',
     title: '把 Codex 工作现场搬进飞书：群内直接聊业务、实时迭代需求',
     excerpt: '在飞书群内直接对话业务，让 Codex 持续推进需求迭代。',
@@ -87,6 +94,21 @@ function toArticle(item: RssItem, index: number): LatestArticle | undefined {
   };
 }
 
+function mergeArticles(remoteArticles: LatestArticle[]): LatestArticle[] {
+  const unique = new Map<string, LatestArticle>();
+
+  for (const article of [...fallbackArticles, ...remoteArticles]) {
+    if (!unique.has(article.href)) unique.set(article.href, article);
+  }
+
+  return [...unique.values()]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .map((article, index) => ({
+      ...article,
+      meta: index === 0 ? '最新文章' : '文章',
+    }));
+}
+
 export async function getArticleOverview(): Promise<{ latest: LatestArticle[]; total: number }> {
   try {
     const response = await fetch(ARTICLES_RSS_URL, {
@@ -103,7 +125,8 @@ export async function getArticleOverview(): Promise<{ latest: LatestArticle[]; t
       .filter((article): article is LatestArticle => Boolean(article));
 
     if (articles.length > 0) {
-      return { latest: articles.slice(0, 4), total: articles.length };
+      const mergedArticles = mergeArticles(articles);
+      return { latest: mergedArticles.slice(0, 4), total: mergedArticles.length };
     }
   } catch {
     // Keep the homepage buildable while the article site is temporarily unavailable.
