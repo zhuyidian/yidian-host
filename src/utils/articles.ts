@@ -27,6 +27,13 @@ const ARTICLES_RSS_URL = import.meta.env.ARTICLES_RSS_URL || 'https://articles.y
 
 const fallbackArticles: LatestArticle[] = [
   {
+    date: '2026/08/04',
+    title: '一点API 使用教程(二)：Codex接入使用',
+    excerpt: '从安装 Codex、配置一点API 到完成首次对话的使用教程。',
+    href: 'https://articles.yidianhub.com/posts/yidian-api-codex-setup/',
+    meta: '最新文章',
+  },
+  {
     date: '2026/08/03',
     title: '一点API 使用教程(一)：兑换key',
     excerpt: '从注册登录、兑换额度到创建令牌，并给出 Codex 接入一点API 的配置示例。',
