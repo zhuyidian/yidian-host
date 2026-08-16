@@ -98,7 +98,9 @@ const apiHighlights = [
 
   <section class="border-b border-[var(--yidian-border)] bg-[var(--yidian-surface)] py-[54px] min-[681px]:py-[76px]">
     <div class="mx-auto w-[calc(100%-28px)] max-w-[1180px]">
-      <div>
+      <div
+        class="flex flex-col gap-[18px] min-[681px]:flex-row min-[681px]:items-end min-[681px]:justify-between min-[681px]:gap-6"
+      >
         <div>
           <p class="m-0 text-[12px] font-[800] uppercase leading-[15px] text-primary">Latest writing</p>
           <h2
@@ -107,6 +109,20 @@ const apiHighlights = [
             最近发布
           </h2>
         </div>
+
+        <a
+          class="group inline-flex shrink-0 self-end items-center gap-[8px] p-0 text-[13px] font-[500] leading-[16px] text-[#aeb7ac] transition-colors hover:text-primary"
+          href="https://articles.yidianhub.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="查看全部文章"
+        >
+          <span>查看全部文章</span>
+          <Icon
+            name="tabler:arrow-right"
+            class="h-[16px] w-[16px] text-current transition-transform duration-150 group-hover:translate-x-0.5"
+          />
+        </a>
       </div>
 
       <div class="mt-[27px] grid grid-cols-1 gap-[14px] min-[768px]:grid-cols-3">

@@ -3,31 +3,35 @@ import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
 import Logo from '~/components/Logo.astro';
+import wechatQrCode from '~/assets/images/footer/wechat-qrcode.webp';
 import wecomQrCode from '~/assets/images/footer/wecom-qr.webp';
 import { getHomePermalink } from '~/utils/permalinks';
 
-interface Link {
-  text?: string;
-  href?: string;
-  ariaLabel?: string;
-  icon?: string;
-}
-
-interface Links {
-  title?: string;
-  links: Array<Link>;
-}
+const qrContacts = [
+  {
+    label: '联系客服',
+    action: '点击添加企业微信',
+    ariaLabel: '添加企业微信',
+    cardId: 'wecomQrCard',
+    image: wecomQrCode,
+    alt: '企业微信二维码，扫码添加企业微信',
+  },
+  {
+    label: '关注公众号',
+    action: '点击关注公众号',
+    ariaLabel: '关注微信公众号',
+    cardId: 'wechatQrCard',
+    image: wechatQrCode,
+    alt: '微信公众号二维码，扫码关注微信公众号',
+  },
+];
 
 export interface Props {
-  links: Array<Links>;
-  secondaryLinks: Array<Link>;
-  socialLinks: Array<Link>;
+  secondaryLinks: unknown[];
+  socialLinks: unknown[];
   footNote?: string;
   theme?: string;
 }
-
-const { links = [] } = Astro.props;
-const footerLinks = links.flatMap((group) => group.links);
 ---
 
 <footer id="about" class="yidian-footer relative min-h-[150px] bg-[var(--yidian-footer-bg)] text-[#dfe4dd] not-prose">
@@ -38,93 +42,90 @@ const footerLinks = links.flatMap((group) => group.links);
       <Logo />
     </a>
 
-    <div class="relative min-w-0">
-      <p class="m-0 pr-[38px] text-[13px] font-normal leading-[16px] text-[#8f998d] md:pr-0">
-        服务、文章与日常资源的独立空间。
-      </p>
-
-      <div
-        class="absolute right-0 top-1/2 z-10 flex -translate-y-1/2 items-center gap-[8px] whitespace-nowrap md:left-[70%] md:right-auto md:-translate-x-1/2"
-        data-wecom-qr
-      >
-        <span class="hidden text-[13px] font-normal leading-[16px] text-[#aeb7ac] md:inline">联系客服</span>
-
-        <div class="relative">
-          <button
-            type="button"
-            class="grid size-[28px] place-items-center rounded-[8px] border border-[#475149] bg-[#1d211e] text-[#aeb7ac] transition-colors hover:border-[#71d7a7] hover:text-[#71d7a7]"
-            data-wecom-qr-trigger
-            aria-expanded="false"
-            aria-controls="wecomQrCard"
-            aria-label="添加企业微信"
-            title="添加企业微信"
-          >
-            <Icon name="tabler:brand-wechat" class="size-[16px]" />
-          </button>
-
-          <div
-            id="wecomQrCard"
-            class="absolute bottom-[calc(100%+10px)] right-0 w-[204px] rounded-[8px] border border-[#475149] bg-[#1d211e] p-[10px] shadow-2xl md:left-1/2 md:right-auto md:-translate-x-1/2"
-            data-wecom-qr-card
-            hidden
-          >
-            <Image src={wecomQrCode} alt="企业微信二维码，扫码添加企业微信" widths={[204, 408]} sizes="204px" />
-          </div>
-        </div>
-
-        <span class="hidden text-[13px] font-normal leading-[16px] text-[#71d7a7] md:inline">点击添加企业微信</span>
-      </div>
+    <div class="min-w-0">
+      <p class="m-0 text-[13px] font-normal leading-[16px] text-[#8f998d]">服务、文章与日常资源的独立空间。</p>
     </div>
 
-    <nav
-      class="flex flex-wrap items-center gap-x-[18px] gap-y-[8px] text-[13px] font-normal leading-[16px]"
-      aria-label="页脚导航"
+    <div
+      class="flex min-h-[40px] flex-wrap items-center justify-center gap-x-[14px] gap-y-[8px] text-[12px] font-normal leading-[16px] md:min-h-0 md:justify-self-end md:gap-x-[18px] md:text-[13px]"
+      aria-label="联系与关注"
+      data-qr-widgets
     >
       {
-        footerLinks.map(({ text, href, ariaLabel }) => (
-          <a
-            class="whitespace-nowrap text-[#aeb7ac] transition-colors hover:text-[#dfe4dd]"
-            href={href}
-            aria-label={ariaLabel}
-            {...(href?.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-          >
-            <Fragment set:html={text} />
-          </a>
+        qrContacts.map((contact) => (
+          <div class="relative flex items-center gap-[8px] whitespace-nowrap" data-qr-widget>
+            <span class="text-[#aeb7ac]">{contact.label}</span>
+
+            <div class="relative">
+              <button
+                type="button"
+                class="grid size-[28px] place-items-center rounded-[8px] border border-[#475149] bg-[#1d211e] text-[#aeb7ac] transition-colors hover:border-[#71d7a7] hover:text-[#71d7a7]"
+                data-qr-trigger
+                aria-expanded="false"
+                aria-controls={contact.cardId}
+                aria-label={contact.ariaLabel}
+                title={contact.ariaLabel}
+              >
+                <Icon name="tabler:brand-wechat" class="size-[16px]" />
+              </button>
+
+              <div
+                id={contact.cardId}
+                class="absolute bottom-[calc(100%+10px)] right-0 z-20 w-[204px] rounded-[8px] border border-[#475149] bg-[#1d211e] p-[10px] shadow-2xl"
+                data-qr-card
+                hidden
+              >
+                <Image src={contact.image} alt={contact.alt} widths={[204, 408]} sizes="204px" />
+              </div>
+            </div>
+
+            <span class="hidden text-[#71d7a7] md:inline">{contact.action}</span>
+          </div>
         ))
       }
-    </nav>
+    </div>
   </div>
 </footer>
 
 <script>
-  function initializeWecomQr() {
-    const widget = document.querySelector<HTMLElement>('[data-wecom-qr]');
-    if (!widget || widget.dataset.initialized === 'true') return;
-    widget.dataset.initialized = 'true';
+  function initializeQrWidgets() {
+    const container = document.querySelector<HTMLElement>('[data-qr-widgets]');
+    if (!container || container.dataset.initialized === 'true') return;
+    container.dataset.initialized = 'true';
 
-    const trigger = widget.querySelector<HTMLButtonElement>('[data-wecom-qr-trigger]');
-    const card = widget.querySelector<HTMLElement>('[data-wecom-qr-card]');
-    if (!trigger || !card) return;
-
-    const close = () => {
-      card.hidden = true;
-      trigger.setAttribute('aria-expanded', 'false');
+    const widgets = Array.from(container.querySelectorAll<HTMLElement>('[data-qr-widget]'));
+    const closeAll = () => {
+      widgets.forEach((widget) => {
+        const trigger = widget.querySelector<HTMLButtonElement>('[data-qr-trigger]');
+        const card = widget.querySelector<HTMLElement>('[data-qr-card]');
+        if (!trigger || !card) return;
+        card.hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+      });
     };
 
-    trigger.addEventListener('click', (event) => {
-      event.stopPropagation();
-      const opening = card.hidden;
-      card.hidden = !opening;
-      trigger.setAttribute('aria-expanded', String(opening));
+    widgets.forEach((widget) => {
+      const trigger = widget.querySelector<HTMLButtonElement>('[data-qr-trigger]');
+      const card = widget.querySelector<HTMLElement>('[data-qr-card]');
+      if (!trigger || !card) return;
+
+      trigger.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const opening = card.hidden;
+        closeAll();
+        card.hidden = !opening;
+        trigger.setAttribute('aria-expanded', String(opening));
+      });
+
+      widget.addEventListener('click', (event) => event.stopPropagation());
     });
 
-    widget.addEventListener('click', (event) => event.stopPropagation());
-    document.addEventListener('click', close);
+    document.addEventListener('click', closeAll);
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') close();
+      if (event.key === 'Escape') closeAll();
     });
   }
 
-  initializeWecomQr();
-  document.addEventListener('astro:page-load', initializeWecomQr);
+  initializeQrWidgets();
+  document.addEventListener('astro:page-load', initializeQrWidgets);
 </script>

@@ -27,6 +27,181 @@ const ARTICLES_RSS_URL = import.meta.env.ARTICLES_RSS_URL || 'https://articles.y
 
 const fallbackArticles: LatestArticle[] = [
   {
+    date: "2026/08/16",
+    title: "一点API 使用教程(二十七)：WorkBuddy 配置教程",
+    excerpt: "下载 WorkBuddy",
+    href: "https://articles.yidianhub.com/posts/yidian-api-workbuddy/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(二十六)：Hermes Desktop 桌面端",
+    excerpt: "1 下载安装",
+    href: "https://articles.yidianhub.com/posts/yidian-api-hermes-desktop/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(二十五)：Hermes Agent 基础配置指南",
+    excerpt: "前言",
+    href: "https://articles.yidianhub.com/posts/yidian-api-hermes-agent/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(二十四)：OpenHuman 配置教程",
+    excerpt: "下载安装 OpenHuman",
+    href: "https://articles.yidianhub.com/posts/yidian-api-openhuman/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(二十三)：Open Claw 接入 Claude 第三方中转 API 教程",
+    excerpt: "0、准备工作",
+    href: "https://articles.yidianhub.com/posts/yidian-api-open-claw-setup-claude-api/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(二十二)：VS Code 配置 Claude Code 插件",
+    excerpt: "VSCode & Claude code 插件",
+    href: "https://articles.yidianhub.com/posts/yidian-api-vscode-claude-code/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(二十一)：VS Code 配置 Zoo Code插件",
+    excerpt: "VSCode & Zoo Code 插件",
+    href: "https://articles.yidianhub.com/posts/yidian-api-vscode-zoo-code/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(二十)：VS Code 配置 Cline 插件",
+    excerpt: "前言",
+    href: "https://articles.yidianhub.com/posts/yidian-api-vscode-cline/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(十九)：IDEA/PyCharm 配置 Claude Code",
+    excerpt: "前言",
+    href: "https://articles.yidianhub.com/posts/yidian-api-idea-pycharm-setup/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(十八)：Trae 配置教程",
+    excerpt: "Trae  配置教程",
+    href: "https://articles.yidianhub.com/posts/yidian-api-trae/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(十七)：Cursor 编辑器配置 Claude Code 插件",
+    excerpt: "前言",
+    href: "https://articles.yidianhub.com/posts/yidian-api-cursor-claude-code/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(十六)：Windsurf 配置 Claude Code 插件",
+    excerpt: "本教程默认观看用户拥有Windsurf账号（或者有能登录Windsurf的手段）",
+    href: "https://articles.yidianhub.com/posts/yidian-api-windsurf-claude-code/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(十五)：Claude 客户端配置教程",
+    excerpt: "前言",
+    href: "https://articles.yidianhub.com/posts/yidian-api-claude/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(十四)：Cherry Studio 使用教程",
+    excerpt: "1 下载安装Cherry Studio",
+    href: "https://articles.yidianhub.com/posts/yidian-api-cherry-studio/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(十三)：Chatbox 教程",
+    excerpt: "第一：下载与安装",
+    href: "https://articles.yidianhub.com/posts/yidian-api-chatbox-new/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/16",
+    title: "一点API 使用教程(十二)：Chatbox 手机版教程",
+    excerpt: "第一：下载与安装",
+    href: "https://articles.yidianhub.com/posts/yidian-api-chatbox/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/10",
+    title: "一点API 使用教程(十一)：作图软件 接入使用",
+    excerpt: "前言",
+    href: "https://articles.yidianhub.com/posts/yidian-api-image2/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/10",
+    title: "一点API 使用教程(十)：CC Switch 接入使用",
+    excerpt: "📌 使用简介",
+    href: "https://articles.yidianhub.com/posts/yidian-api-cc-switch-setup/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/10",
+    title: "一点API 使用教程(九)：AstrBot 接入使用",
+    excerpt: "[Astrbot 官方文档](https%3A%2F%2Fdocs.astrbot.app%2F)",
+    href: "https://articles.yidianhub.com/posts/yidian-api-astrbot-setup/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/10",
+    title: "一点API 使用教程(八)：Obsidian 配置 Copilot 插件接入使用",
+    excerpt: "1 下载安装Obsidian",
+    href: "https://articles.yidianhub.com/posts/yidian-api-obsidian-copilot-setup/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/10",
+    title: "一点API 使用教程(七)：Pencil 配置 Claude Code+CC-Switch插件接入使用",
+    excerpt: "**Claude Code（CC）安装**",
+    href: "https://articles.yidianhub.com/posts/yidian-api-pencil-claude-code-cc-switch-setup/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/10",
+    title: "一点API 使用教程(六)：沉浸式翻译配置接入使用",
+    excerpt: "前言",
+    href: "https://articles.yidianhub.com/posts/yidian-api-setup/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/08/06",
+    title: "一点API 使用教程(五)：Open Code接入使用",
+    excerpt: "一、简介",
+    href: "https://articles.yidianhub.com/posts/yidian-api-open-code-setup/",
+    meta: '最新文章',
+  },
+  {
+    date: '2026/08/06',
+    title: '一点API 使用教程(四)：VS Code 配置 CodeX接入使用',
+    excerpt: '在 VS Code 中安装 CodeX 插件，配置一点 API 并完成首次对话。',
+    href: 'https://articles.yidianhub.com/posts/yidian-api-vscode-codex-setup/',
+    meta: '最新文章',
+  },
+  {
+    date: '2026/08/05',
+    title: '一点API 使用教程(三)：Codex Cli接入使用',
+    excerpt: '从环境准备、安装 Codex CLI 到配置一点API令牌并完成首次启动的使用教程。',
+    href: 'https://articles.yidianhub.com/posts/yidian-api-codex-cli-setup/',
+    meta: '最新文章',
+  },
+  {
     date: '2026/08/04',
     title: '一点API 使用教程(二)：Codex接入使用',
     excerpt: '从安装 Codex、配置一点API 到完成首次对话的使用教程。',
@@ -133,11 +308,11 @@ export async function getArticleOverview(): Promise<{ latest: LatestArticle[]; t
 
     if (articles.length > 0) {
       const mergedArticles = mergeArticles(articles);
-      return { latest: mergedArticles.slice(0, 4), total: mergedArticles.length };
+      return { latest: mergedArticles.slice(0, 5), total: mergedArticles.length };
     }
   } catch {
     // Keep the homepage buildable while the article site is temporarily unavailable.
   }
 
-  return { latest: fallbackArticles, total: fallbackArticles.length };
+  return { latest: fallbackArticles.slice(0, 5), total: fallbackArticles.length };
 }
