@@ -1,0 +1,223 @@
+
+> @onwidget/astrowind@1.0.0-beta.63 dev
+> astro dev --host 127.0.0.1 --port 4321
+
+[2m10:25:47[22m [34m[astrowind][39m Astrowind `./src/config.yaml` has been loaded.
+[vite] connected.
+[2m10:25:51[22m [34m[types][39m Generated [2m5ms[22m
+[vite] connected.
+[2m10:25:52[22m [34m[content][39m Syncing content
+[2m10:25:52[22m [34m[content][39m Synced content
+[42m[1m astro [22m[49m [32mv6.4.2[39m [2mready in[22m 10043 [2mms[22m
+[2m┃[22m Local    [36mhttp://127.0.0.1:4321/[39m
+[2m10:25:52[22m [32mwatching for file changes...[39m
+[2m10:26:47[22m [34m[200][39m / [2m245ms[22m
+[2m10:30:05[22m [34m[200][39m / [2m20ms[22m
+[2m10:30:08[22m [34m[200][39m /_image [2m512ms[22m
+[2m10:33:55[22m [34m[watch][39m /src/assets/styles/tailwind.css
+[2m10:33:56[22m [34m[200][39m / [2m89ms[22m
+[2m10:34:14[22m [34m[200][39m / [2m7ms[22m
+[2m10:34:14[22m [34m[200][39m /_image [2m154ms[22m
+[2m10:34:14[22m [34m[200][39m /_image [2m225ms[22m
+[2m10:34:38[22m [34m[200][39m / [2m9ms[22m
+[2m10:36:03[22m [34m[200][39m / [2m13ms[22m
+[2m10:37:53[22m [34m[200][39m /about [2m179ms[22m
+[2m10:37:53[22m [34m[200][39m /tools [2m119ms[22m
+[2m10:43:04[22m [34m[watch][39m /src/assets/styles/tailwind.css
+[2m10:43:04[22m [34m[200][39m / [2m65ms[22m
+[2m10:43:23[22m [34m[200][39m / [2m11ms[22m
+[2m10:44:02[22m [34m[200][39m / [2m9ms[22m
+[2m10:44:02[22m [34m[200][39m /_image [2m273ms[22m
+[2m10:44:02[22m [34m[200][39m /_image [2m275ms[22m
+[2m10:44:23[22m [34m[200][39m / [2m6ms[22m
+[2m10:45:17[22m [34m[200][39m /about [2m10ms[22m
+[2m10:46:10[22m [34m[200][39m /tools [2m9ms[22m
+[2m11:32:32[22m [34m[200][39m / [2m13ms[22m
+[2m11:32:41[22m [34m[200][39m / [2m7ms[22m
+[2m11:32:49[22m [34m[200][39m / [2m7ms[22m
+[2m14:21:56[22m [34m[200][39m /tools [2m7ms[22m
+[2m14:22:00[22m [34m[200][39m /tools [2m8ms[22m
+[2m14:24:37[22m [34m[200][39m / [2m8ms[22m
+[2m14:24:38[22m [34m[200][39m / [2m9ms[22m
+[2m14:24:46[22m [34m[200][39m /market [2m57ms[22m
+[2m14:24:46[22m [34m[200][39m /market [2m7ms[22m
+[2m14:24:46[22m [34m[200][39m /_image [2m43ms[22m
+[2m14:24:46[22m [34m[200][39m /_image [2m50ms[22m
+[2m14:24:46[22m [34m[200][39m /_image [2m66ms[22m
+[2m14:24:46[22m [34m[200][39m /_image [2m49ms[22m
+[2m14:24:46[22m [34m[200][39m /_image [2m60ms[22m
+[2m14:24:46[22m [34m[200][39m /_image [2m51ms[22m
+[2m14:24:46[22m [34m[200][39m /_image [2m48ms[22m
+[2m14:24:46[22m [34m[200][39m /_image [2m63ms[22m
+[2m14:24:55[22m [34m[200][39m /tools [2m7ms[22m
+[2m14:30:34[22m [34m[200][39m /about [2m8ms[22m
+[2m14:30:35[22m [34m[200][39m /about [2m9ms[22m
+[2m14:31:02[22m [34m[200][39m /tools [2m8ms[22m
+[2m14:37:59[22m [34m[watch][39m /src/assets/styles/tailwind.css, /src/pages/tools.astro?astro&type=style&index=0&lang.css
+[2m14:37:59[22m [34m[200][39m /tools [2m100ms[22m
+[31m[1m14:37:59[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m14:38:19[22m [34m[200][39m /tools [2m6ms[22m
+[31m[1m14:38:19[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at eval (E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m14:38:38[22m [34m[watch][39m /src/assets/styles/tailwind.css, /src/pages/tools.astro?astro&type=style&index=0&lang.css
+[2m14:38:38[22m [34m[200][39m /tools [2m101ms[22m
+[2m14:38:38[22m [34m[200][39m /tools [2m101ms[22m
+[31m[1m14:38:38[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at eval (E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m14:38:38[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at eval (E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m14:39:13[22m [34m[200][39m /tools [2m9ms[22m
+[31m[1m14:39:13[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at eval (E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m14:39:15[22m [34m[200][39m /tools [2m10ms[22m
+[31m[1m14:39:15[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at eval (E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m14:39:17[22m [34m[200][39m /tools [2m9ms[22m
+[31m[1m14:39:17[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at eval (E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m14:39:22[22m [34m[200][39m /tools [2m8ms[22m
+[31m[1m14:39:22[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at eval (E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m14:39:59[22m [34m[200][39m /tools [2m12ms[22m
+[31m[1m14:39:59[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at eval (E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m14:39:59[22m [34m[200][39m /tools [2m9ms[22m
+[31m[1m14:39:59[22m [ERROR][39m Unable to locate "tabler:brand-feishu" icon!
+  [1mHint:[22m
+[33m    The "tabler" set does not include an icon named "brand-feishu".
+    
+    Is this a typo?[39m
+  [1mStack trace:[22m
+[2m    at eval (E:\project\AIProjet\test\main-site\node_modules\astro-icon\components\Icon.astro:95:15)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m14:40:36[22m [34m[watch][39m /src/assets/styles/tailwind.css, /src/pages/tools.astro?astro&type=style&index=0&lang.css
+[2m14:40:37[22m [34m[200][39m /tools [2m98ms[22m
+[2m14:40:37[22m [34m[200][39m /tools [2m93ms[22m
+[2m14:41:14[22m [34m[200][39m / [2m12ms[22m
+[2m14:41:15[22m [34m[200][39m / [2m14ms[22m
+[2m14:41:18[22m [34m[200][39m /tools [2m8ms[22m
+[2m14:41:18[22m [34m[200][39m /about [2m9ms[22m
+[2m14:41:20[22m [34m[200][39m /tools [2m9ms[22m
+[2m14:41:42[22m [34m[200][39m /tools [2m8ms[22m
+[2m14:43:06[22m [34m[200][39m /tools [2m8ms[22m
+[2m14:47:39[22m [34m[watch][39m /src/pages/tools.astro?astro&type=style&index=0&lang.css
+[2m14:47:39[22m [34m[watch][39m src/pages/tools.astro
+[vite] program reload
+[2m14:48:42[22m [34m[200][39m /tools [2m31ms[22m
+[2m14:50:16[22m [34m[200][39m /tools [2m6ms[22m
+[2m14:50:33[22m [34m[200][39m / [2m24ms[22m
+[2m14:50:33[22m [34m[200][39m / [2m5ms[22m
+[2m14:50:48[22m [34m[200][39m /tools [2m6ms[22m
+[2m14:52:05[22m [34m[200][39m /market [2m20ms[22m
+[2m14:52:29[22m [34m[200][39m /about [2m22ms[22m
+[2m14:52:32[22m [34m[200][39m /tools [2m7ms[22m
+[2m14:52:34[22m [34m[200][39m / [2m8ms[22m
+[2m14:52:39[22m [34m[200][39m /about [2m8ms[22m
+[2m14:52:45[22m [34m[200][39m / [2m11ms[22m
+[2m14:52:56[22m [34m[200][39m /tools [2m9ms[22m
+[2m14:52:58[22m [34m[200][39m /about [2m6ms[22m
+[2m14:53:47[22m [34m[200][39m / [2m8ms[22m
+[2m14:53:52[22m [34m[200][39m /tools [2m8ms[22m
+[2m14:56:37[22m [34m[200][39m /tools [2m6ms[22m
+[2m15:07:51[22m [34m[200][39m /tools [2m79ms[22m
+[2m15:08:29[22m [34m[watch][39m /src/assets/styles/tailwind.css, /src/pages/tools.astro?astro&type=style&index=0&lang.css
+[2m15:08:29[22m [34m[200][39m /tools [2m58ms[22m
+[2m15:08:30[22m [34m[200][39m /_image [2m24ms[22m
+[2m15:10:20[22m [34m[200][39m /market [2m44ms[22m
+[2m15:10:20[22m [34m[200][39m / [2m38ms[22m
+[2m15:10:21[22m [34m[200][39m / [2m7ms[22m
+[2m15:11:08[22m [34m[200][39m /tools [2m7ms[22m
+[2m15:11:08[22m [34m[200][39m /_image [2m17ms[22m
+[2m15:15:32[22m [34m[200][39m /tools [2m7ms[22m
+[2m15:15:32[22m [34m[200][39m /tools [2m11ms[22m
+[2m15:18:31[22m [34m[watch][39m /src/assets/styles/tailwind.css
+[2m15:18:32[22m [34m[200][39m /tools [2m16ms[22m
+[2m15:19:04[22m [34m[watch][39m /src/assets/styles/tailwind.css
+[2m15:19:05[22m [34m[200][39m /tools [2m11ms[22m
+[2m15:19:35[22m [34m[watch][39m /src/assets/styles/tailwind.css
+[2m15:19:36[22m [34m[200][39m /tools [2m13ms[22m
+[2m15:21:05[22m [34m[200][39m / [2m49ms[22m
+[2m15:21:38[22m [34m[200][39m / [2m5ms[22m
+[2m15:25:02[22m [34m[200][39m / [2m4ms[22m
+[2m15:25:02[22m [34m[200][39m / [2m5ms[22m
+[2m15:25:07[22m [34m[200][39m /market [2m9ms[22m
+[2m15:25:07[22m [34m[200][39m /market [2m9ms[22m
+[2m15:25:14[22m [34m[200][39m /tools [2m5ms[22m
+[2m15:25:15[22m [34m[200][39m /tools [2m7ms[22m
+[2m15:44:37[22m [34m[200][39m / [2m9ms[22m
+[2m15:51:53[22m [34m[200][39m /tools [2m5ms[22m
+[2m15:54:52[22m [34m[watch][39m /src/assets/styles/tailwind.css, /src/pages/tools.astro?astro&type=style&index=0&lang.css
+[2m15:54:52[22m [34m[200][39m /tools [2m42ms[22m
+[2m15:55:41[22m [34m[200][39m / [2m8ms[22m
+[2m15:55:41[22m [34m[200][39m / [2m10ms[22m
+[2m15:56:51[22m [34m[200][39m /tools [2m10ms[22m
+[2m15:57:21[22m [34m[200][39m /tools [2m6ms[22m
+[2m15:57:54[22m [34m[200][39m /about [2m57ms[22m
+[2m15:57:56[22m [34m[200][39m /tools [2m5ms[22m
+[2m15:58:52[22m [34m[200][39m /tools [2m18ms[22m
+[2m15:59:04[22m [34m[200][39m / [2m15ms[22m
+[2m16:01:10[22m [34m[watch][39m /src/assets/styles/tailwind.css
+[2m16:01:11[22m [34m[200][39m / [2m47ms[22m
+[2m16:01:34[22m [34m[200][39m / [2m8ms[22m
+[2m16:10:12[22m [34m[200][39m /tools [2m7ms[22m
+[vite] program reload
+[2m16:22:49[22m [34m[200][39m / [2m49ms[22m
+[vite] program reload
+[2m16:54:34[22m [34m[200][39m / [2m44ms[22m
+[vite] program reload
+[2m17:42:00[22m [34m[200][39m / [2m41ms[22m

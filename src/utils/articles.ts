@@ -27,6 +27,62 @@ const ARTICLES_RSS_URL = import.meta.env.ARTICLES_RSS_URL || 'https://articles.y
 
 const fallbackArticles: LatestArticle[] = [
   {
+    date: "2026/09/09",
+    title: "一点API 使用教程(三十六)：Claude Code Mac版使用教程",
+    excerpt: "0）事前准备API和URL",
+    href: "https://articles.yidianhub.com/posts/yidian-api-claude-code-mac/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/09",
+    title: "一点API 使用教程(三十五)：Claude Code Linux使用指南",
+    excerpt: "*Claude Code 是 Anthropic 推出的强大 AI 编程工具，能够直接在您的电脑上协助编写代码、操作文件。本教程将教您如何使用Key 来完美运行它。*",
+    href: "https://articles.yidianhub.com/posts/yidian-api-claude-code-linux/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/09",
+    title: "一点API 使用教程(三十四)：Claude Code Windows版使用教程",
+    excerpt: "新式一键安装",
+    href: "https://articles.yidianhub.com/posts/yidian-api-claude-code-windows/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/09",
+    title: "一点API 使用教程(三十三)：Claude Code 一键部署",
+    excerpt: "前言",
+    href: "https://articles.yidianhub.com/posts/yidian-api-claude-code/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/09",
+    title: "一点API 使用教程(三十二)：各智能体常见支持文件格式和测试",
+    excerpt: "*以下数据来源于客户与客服数据反馈汇总，未必准确。测试记录来源于技术人员的测试过程，不能代表模型的准确读取能力。*",
+    href: "https://articles.yidianhub.com/posts/yidian-api/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/09",
+    title: "一点API 使用教程(三十一)：各智能体常见JSON配置文件参考",
+    excerpt: "OpenClaw - CC-Switch",
+    href: "https://articles.yidianhub.com/posts/yidian-api-json/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/09",
+    title: "一点API 使用教程(二十九)：Token如何减小消耗",
+    excerpt: "勤开新对话（避开最大的烧钱坑）",
+    href: "https://articles.yidianhub.com/posts/yidian-api-token/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/07",
+    title: "一点API 使用教程(二十八)：API 接口调用说明",
+    excerpt: "一、主流客户端支持的协议",
+    href: "https://articles.yidianhub.com/posts/yidian-api-api/",
+    meta: '最新文章',
+  },
+  {
     date: "2026/08/16",
     title: "一点API 使用教程(二十七)：WorkBuddy 配置教程",
     excerpt: "下载 WorkBuddy",
