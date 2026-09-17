@@ -27,6 +27,34 @@ const ARTICLES_RSS_URL = import.meta.env.ARTICLES_RSS_URL || 'https://articles.y
 
 const fallbackArticles: LatestArticle[] = [
   {
+    date: "2026/09/18",
+    title: "一点API 使用教程(三十九)：WorkBuddy使用",
+    excerpt: "下载 WorkBuddy",
+    href: "https://articles.yidianhub.com/posts/yidian-api-workbuddy-config-setup/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/18",
+    title: "一点API 使用教程(三十八)：TRAE Work使用",
+    excerpt: "下载TRAE Work",
+    href: "https://articles.yidianhub.com/posts/yidian-api-trae-work/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/18",
+    title: "怎么给四个AI “打工人” “换心脏”",
+    excerpt: "上一篇文章   聊完四款工具，很多人后台问：**这些工具用的是什么模型？我能不能换？**",
+    href: "https://articles.yidianhub.com/posts/yidian-api-model/",
+    meta: '最新文章',
+  },
+  {
+    date: "2026/09/18",
+    title: "四个AI“打工人”横评：豆包工作、TRAE Work、WorkBuddy、Codex，到底该选谁？",
+    excerpt: "**一句话结论先行**：如果你在飞书生态里工作，**豆包工作**是当前企业级Agent最接近“终局形态”的选择；如果你只想让AI帮你处理本地杂活，**WorkBuddy**依然最省心；如果你是产品经理或独立开发者，**TRAE Work**的全链路覆盖最完整；如果你是专业程序员，**Codex**的工程能力仍然是天花板",
+    href: "https://articles.yidianhub.com/posts/yidian-api-agents/",
+    meta: '最新文章',
+  },
+  {
     date: "2026/09/09",
     title: "一点API 使用教程(三十六)：Claude Code Mac版使用教程",
     excerpt: "0）事前准备API和URL",
