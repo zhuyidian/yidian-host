@@ -3,14 +3,12 @@ import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 
 import Layout from '~/layouts/PageLayout.astro';
-import chatgptCover from '~/assets/images/market/chatgpt-plus-membership.webp';
-import chatgptPro20xCover from '~/assets/images/market/chatgpt-prp-20x-membership.webp';
-import chatgptPro5xCover from '~/assets/images/market/chatgpt-prp-5x-membership.webp';
+import antigravityBrandCover from '~/assets/images/market/antigravity-brand-cover.webp';
+import chatgptBrandCover from '~/assets/images/market/chatgpt-brand-cover.webp';
+import claudeBrandCover from '~/assets/images/market/claude-brand-cover.webp';
+import geminiBrandCover from '~/assets/images/market/gemini-brand-cover.webp';
 import grokCover from '~/assets/images/market/grok-video-membership.webp';
-import networkOneMonthCover from '~/assets/images/market/global-network-one-month.webp';
-import networkTwoMonthsCover from '~/assets/images/market/global-network-two-months.webp';
-import network40Cover from '~/assets/images/market/network-40mbps-200g.webp';
-import network80Cover from '~/assets/images/market/network-80mbps-200g.webp';
+import networkBrandCover from '~/assets/images/market/network-brand-cover.webp';
 import wecomQrCode from '~/assets/images/footer/wecom-qr.webp';
 
 const metadata = {
@@ -19,6 +17,11 @@ const metadata = {
 };
 
 const categories = ['全部', '服务', '数字内容', '软件工具', '其它'];
+
+const claudeIosDescription =
+  '正规全区 iOS 充值，无需提供账号密码，使用 Claude ID 即可充值，可显著降低充值环节的账号风险。\n\n仅质保订阅到账，账号封禁不在质保范围内，包括充值后短时间内被封。Claude 可能因地区、网络环境或平台风控策略限制账号，请购买前自行评估。';
+
+const claudeHelpUrl = 'https://ip.net.coffee/claude/timezone.html';
 
 const products = [
   {
@@ -51,7 +54,7 @@ const products = [
     sold: 290,
     stock: 22,
     commission: '¥10.00',
-    cover: chatgptCover,
+    cover: chatgptBrandCover,
     href: 'https://api.yidianhub.com',
   },
   {
@@ -68,7 +71,7 @@ const products = [
     sold: 180,
     stock: 18,
     commission: '¥10.00',
-    cover: chatgptPro5xCover,
+    cover: chatgptBrandCover,
     href: 'https://api.yidianhub.com',
   },
   {
@@ -85,7 +88,116 @@ const products = [
     sold: 108,
     stock: 10,
     commission: '¥10.00',
-    cover: chatgptPro20xCover,
+    cover: chatgptBrandCover,
+    href: 'https://api.yidianhub.com',
+  },
+  {
+    id: 'claude-pro-ios',
+    category: '服务',
+    title: 'Claude Pro iOS 渠道',
+    summary: 'Claude Pro 月度订阅 · iOS 渠道直充',
+    dialogTitle: 'Claude Pro iOS 渠道',
+    dialogSummary: 'Claude Pro 月度订阅 · iOS 渠道直充',
+    description: claudeIosDescription,
+    helpUrl: claudeHelpUrl,
+    helpLabel: '查看时区与环境检测工具',
+    price: '¥180.00',
+    originalPrice: '',
+    sold: 0,
+    stock: '有货',
+    commission: '',
+    cover: claudeBrandCover,
+    href: 'https://api.yidianhub.com',
+  },
+  {
+    id: 'claude-max-5x-ios',
+    category: '服务',
+    title: 'Claude Max 5X 直充月卡 · iOS 渠道',
+    summary: 'Claude Max 5X 月度订阅 · iOS 渠道直充',
+    dialogTitle: 'Claude Max 5X 直充月卡 · iOS 渠道',
+    dialogSummary: 'Claude Max 5X 月度订阅 · iOS 渠道直充',
+    description: claudeIosDescription,
+    helpUrl: claudeHelpUrl,
+    helpLabel: '查看时区与环境检测工具',
+    price: '¥999.00',
+    originalPrice: '',
+    sold: 0,
+    stock: '有货',
+    commission: '',
+    cover: claudeBrandCover,
+    href: 'https://api.yidianhub.com',
+  },
+  {
+    id: 'claude-max-20x-ios',
+    category: '服务',
+    title: 'Claude Max 20X 直充月卡 · iOS 渠道',
+    summary: 'Claude Max 20X 月度订阅 · iOS 渠道直充',
+    dialogTitle: 'Claude Max 20X 直充月卡 · iOS 渠道',
+    dialogSummary: 'Claude Max 20X 月度订阅 · iOS 渠道直充',
+    description: claudeIosDescription,
+    helpUrl: claudeHelpUrl,
+    helpLabel: '查看时区与环境检测工具',
+    price: '¥1820.00',
+    originalPrice: '',
+    sold: 0,
+    stock: '有货',
+    commission: '',
+    cover: claudeBrandCover,
+    href: 'https://api.yidianhub.com',
+  },
+  {
+    id: 'gemini-pro-year-membership',
+    category: '服务',
+    title: 'Gemini Pro 会员（约一年）',
+    summary: 'Gemini Pro 长期会员服务 · 约一年',
+    dialogTitle: 'Gemini Pro 会员（约一年）',
+    dialogSummary: 'Gemini Pro 长期会员服务 · 约一年',
+    description: '包首次登录。后续账号环境与日常使用由用户自行维护，账号封禁不在质保范围内。',
+    helpUrl: '',
+    helpLabel: '',
+    price: '¥40.00',
+    originalPrice: '',
+    sold: 0,
+    stock: '有货',
+    commission: '',
+    cover: geminiBrandCover,
+    href: 'https://api.yidianhub.com',
+  },
+  {
+    id: 'gemini-pro-antigravity-membership',
+    category: '服务',
+    title: 'Gemini Pro 会员包反重力',
+    summary: 'Gemini Pro 会员 · 支持 Antigravity IDE',
+    dialogTitle: 'Gemini Pro 会员包反重力',
+    dialogSummary: 'Gemini Pro 会员 · 支持 Antigravity IDE',
+    description:
+      '包含 Antigravity IDE 使用服务，并包首次登录。后续账号环境与日常使用由用户自行维护，账号封禁不在质保范围内。',
+    helpUrl: '',
+    helpLabel: '',
+    price: '¥90.00',
+    originalPrice: '',
+    sold: 0,
+    stock: '有货',
+    commission: '',
+    cover: antigravityBrandCover,
+    href: 'https://api.yidianhub.com',
+  },
+  {
+    id: 'gemini-ultra-top-up',
+    category: '服务',
+    title: 'Gemini Ultra 代充',
+    summary: 'Gemini Ultra 会员代充服务',
+    dialogTitle: 'Gemini Ultra 代充',
+    dialogSummary: 'Gemini Ultra 会员代充服务',
+    description: 'Gemini Ultra 会员代充服务，具体充值方式、账号要求及服务范围请联系客服确认。',
+    helpUrl: '',
+    helpLabel: '',
+    price: '¥1600.00',
+    originalPrice: '',
+    sold: 0,
+    stock: '有货',
+    commission: '',
+    cover: geminiBrandCover,
     href: 'https://api.yidianhub.com',
   },
   {
@@ -101,7 +213,7 @@ const products = [
     sold: 66,
     stock: 99,
     commission: '¥15.00',
-    cover: networkTwoMonthsCover,
+    cover: networkBrandCover,
     href: 'https://api.yidianhub.com',
   },
   {
@@ -117,7 +229,7 @@ const products = [
     sold: 137,
     stock: 99,
     commission: '¥10.00',
-    cover: networkOneMonthCover,
+    cover: networkBrandCover,
     href: 'https://api.yidianhub.com',
   },
   {
@@ -134,7 +246,7 @@ const products = [
     sold: 89,
     stock: 99,
     commission: '¥15.00',
-    cover: network40Cover,
+    cover: networkBrandCover,
     href: 'https://api.yidianhub.com',
   },
   {
@@ -151,7 +263,7 @@ const products = [
     sold: 292,
     stock: 999,
     commission: '¥20.00',
-    cover: network80Cover,
+    cover: networkBrandCover,
     href: 'https://api.yidianhub.com',
   },
 ];
@@ -197,6 +309,8 @@ const products = [
               data-dialog-title={product.dialogTitle}
               data-dialog-summary={product.dialogSummary}
               data-description={product.description}
+              data-help-url={product.helpUrl}
+              data-help-label={product.helpLabel}
               data-price={product.price}
               data-original-price={product.originalPrice}
               data-sold={String(product.sold)}
@@ -223,7 +337,7 @@ const products = [
                 <div class="market-product-bottom">
                   <div class="market-product-price">
                     <strong>{product.price}</strong>
-                    <del>{product.originalPrice}</del>
+                    {product.originalPrice && <del>{product.originalPrice}</del>}
                   </div>
                   <span>
                     已售出 {product.sold} · 库存 {product.stock}
@@ -271,6 +385,7 @@ const products = [
       <span data-dialog-meta></span>
     </div>
     <div class="product-dialog-description" data-dialog-description></div>
+    <a class="product-dialog-help" data-dialog-help href="" target="_blank" rel="noopener noreferrer" hidden> </a>
     <div class="product-dialog-actions">
       <button type="button" class="market-button primary" data-order-open>点击联系客服下单</button>
     </div>
@@ -324,6 +439,7 @@ const products = [
         button.type = 'button';
         button.textContent = String(page);
         button.dataset.marketPage = String(page);
+        button.classList.add('market-page-button');
         button.classList.toggle('active', isCurrentPage);
         button.setAttribute('aria-label', `第 ${page} 页`);
         button.setAttribute('aria-controls', 'marketProductGrid');
@@ -409,6 +525,15 @@ const products = [
         setText('[data-dialog-price]', card.dataset.price);
         setText('[data-dialog-meta]', `已售出 ${card.dataset.sold} · 当前库存 ${card.dataset.stock}`);
         setText('[data-dialog-description]', card.dataset.description);
+
+        const helpLink = productDialog.querySelector<HTMLAnchorElement>('[data-dialog-help]');
+        if (helpLink) {
+          const helpUrl = card.dataset.helpUrl || '';
+          helpLink.hidden = !helpUrl;
+          helpLink.textContent = card.dataset.helpLabel || '';
+          if (helpUrl) helpLink.href = helpUrl;
+          else helpLink.removeAttribute('href');
+        }
 
         const coverTarget = productDialog.querySelector<HTMLElement>('[data-dialog-cover]');
         const cover = card.querySelector<HTMLImageElement>('.market-product-image');
@@ -544,7 +669,7 @@ const products = [
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 12px;
     margin-top: 30px;
   }
 
@@ -556,44 +681,86 @@ const products = [
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 6px;
-  }
-
-  .market-pagination button {
-    display: grid;
-    width: 34px;
-    height: 34px;
-    place-items: center;
-    padding: 0;
-    border: 1px solid var(--yidian-market-line-strong);
+    overflow: hidden;
     border-radius: 8px;
     background: var(--yidian-market-panel);
-    color: var(--yidian-market-muted);
+  }
+
+  .market-pagination > button {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: var(--yidian-market-panel);
+    color: var(--yidian-market-accent);
     cursor: pointer;
-    font-size: 13px;
+    transition:
+      background-color 0.16s,
+      color 0.16s,
+      transform 0.16s;
+  }
+
+  .market-pagination > button:hover:not(:disabled) {
+    background: var(--yidian-market-accent-soft);
+  }
+
+  .market-pagination > button:active:not(:disabled) {
+    transform: scale(0.88);
+  }
+
+  .market-page-list :global(.market-page-button) {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--yidian-market-text);
+    cursor: pointer;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1;
     transition:
-      border-color 0.16s,
       background-color 0.16s,
-      color 0.16s;
+      color 0.16s,
+      transform 0.16s;
   }
 
-  .market-pagination button:hover:not(:disabled),
-  .market-pagination button.active {
-    border-color: var(--yidian-market-accent);
+  .market-page-list :global(.market-page-button:hover) {
     background: var(--yidian-market-accent-soft);
     color: var(--yidian-market-accent);
   }
 
-  .market-pagination button:disabled {
-    cursor: not-allowed;
-    opacity: 0.45;
+  .market-page-list :global(.market-page-button:active) {
+    transform: scale(0.85);
   }
 
-  .market-pagination svg {
-    width: 16px;
-    height: 16px;
+  .market-page-list :global(.market-page-button.active),
+  .market-page-list :global(.market-page-button.active:hover) {
+    background: var(--yidian-market-accent);
+    color: var(--yidian-market-accent-ink);
+  }
+
+  .market-pagination > button:focus-visible,
+  .market-page-list :global(.market-page-button:focus-visible) {
+    outline: 2px solid var(--yidian-market-accent);
+    outline-offset: 2px;
+  }
+
+  .market-pagination > button:disabled {
+    color: var(--yidian-market-muted);
+    cursor: not-allowed;
+    opacity: 0.25;
+  }
+
+  .market-pagination > button svg {
+    width: 28px;
+    height: 28px;
   }
 
   .market-empty-state {
@@ -844,6 +1011,25 @@ const products = [
     color: var(--yidian-market-muted);
     line-height: 1.8;
     white-space: pre-line;
+  }
+
+  .product-dialog-help {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 14px;
+    color: var(--yidian-market-accent);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    text-decoration: none;
+  }
+
+  .product-dialog-help:hover {
+    text-decoration: underline;
+  }
+
+  .product-dialog-help[hidden] {
+    display: none;
   }
 
   .product-dialog-actions {

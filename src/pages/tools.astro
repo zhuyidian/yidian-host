@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 
 import Layout from '~/layouts/PageLayout.astro';
 import feishuIcon from '~/assets/images/tools/feishu.webp';
+import heroSmsIcon from '~/assets/images/tools/herosms.png';
 
 const metadata = {
   title: '常用工具',
@@ -16,12 +17,26 @@ const tools = [
   {
     category: '办公',
     image: feishuIcon,
+    imageAlt: '飞书',
     number: '01',
     label: '办公 · 工作流',
     title: '把 Codex 工作现场搬进飞书',
     description: '在飞书群内直接对话业务，让 Codex 持续推进需求迭代。',
     meta: 'Codex · 飞书 · 2026.07.24 · 约 6 分钟阅读',
+    action: '进入文章',
     href: 'https://articles.yidianhub.com/posts/codex-in-feishu/',
+  },
+  {
+    category: '其它',
+    image: heroSmsIcon,
+    imageAlt: 'HEROSMS',
+    number: '02',
+    label: '其它 · 接码服务',
+    title: 'HEROSMS 通用接码平台',
+    description: '使用海外平台时，如需接收短信验证码，可以使用 HEROSMS 获取临时号码完成接码。',
+    meta: '短信接码 · 海外平台 · 在线服务',
+    action: '访问网站',
+    href: 'https://hero-sms.com/cn',
   },
 ];
 ---
@@ -35,7 +50,7 @@ const tools = [
           <h1 id="toolsHeading">常用工具</h1>
           <p class="tools-description">日常工作、内容创作与服务使用中，值得留下的工具与网站。</p>
         </div>
-        <span class="tools-count">1 个工具</span>
+        <span class="tools-count">{tools.length} 个工具</span>
       </header>
 
       <div class="tools-divider"></div>
@@ -67,7 +82,7 @@ const tools = [
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image class="tool-card-icon" src={tool.image} alt="飞书" width={60} height={60} />
+              <Image class="tool-card-icon" src={tool.image} alt={tool.imageAlt} width={60} height={60} />
               <span class="tool-card-number" aria-hidden="true">
                 {tool.number}
               </span>
@@ -76,7 +91,7 @@ const tools = [
               <p>{tool.description}</p>
               <span class="tool-card-meta">{tool.meta}</span>
               <span class="tool-card-action">
-                <em>进入文章</em>
+                <em>{tool.action}</em>
                 <Icon name="tabler:arrow-right" aria-hidden="true" />
               </span>
             </a>
@@ -341,14 +356,14 @@ const tools = [
   }
 
   .tools-section:has(#toolsFilter0:checked) .tool-card,
-  .tools-section:has(#toolsFilter1:checked) .tool-card[data-category='办公'] {
+  .tools-section:has(#toolsFilter1:checked) .tool-card[data-category='办公'],
+  .tools-section:has(#toolsFilter5:checked) .tool-card[data-category='其它'] {
     display: block;
   }
 
   .tools-section:has(#toolsFilter2:checked) .tools-grid,
   .tools-section:has(#toolsFilter3:checked) .tools-grid,
-  .tools-section:has(#toolsFilter4:checked) .tools-grid,
-  .tools-section:has(#toolsFilter5:checked) .tools-grid {
+  .tools-section:has(#toolsFilter4:checked) .tools-grid {
     display: none;
   }
 
@@ -365,8 +380,7 @@ const tools = [
 
   .tools-section:has(#toolsFilter2:checked) .tools-empty-state,
   .tools-section:has(#toolsFilter3:checked) .tools-empty-state,
-  .tools-section:has(#toolsFilter4:checked) .tools-empty-state,
-  .tools-section:has(#toolsFilter5:checked) .tools-empty-state {
+  .tools-section:has(#toolsFilter4:checked) .tools-empty-state {
     display: grid;
   }
 
